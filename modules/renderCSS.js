@@ -4,23 +4,31 @@ const getClassAry = require("./getClassAry.js")
 const fs = require("fs")
 const path = require("path")
 const getStyle = require("./getStyle.js")
+const { TextDecoder } = require("util")
+
+// 检测的文件类型
+const acceptLangIds = ["html", "javascript", "vue"]
 
 const renderCSS = function () {
   const editor = vscode.window.activeTextEditor
-  const text = editor.document.getText()
-  const lineCount = editor.document.lineCount
+  const activeDoc = editor.document
+  const text = activeDoc.getText()
+  console.log(activeDoc)
+  const { lineCount, languageId } = activeDoc
 
-  console.log("text=========>", text)
-  console.log("lineCount=========>", lineCount)
+  if (!acceptLangIds.some((item) => item === languageId)) return
+
+  console.log("languageId=========>", languageId)
+  // console.log("lineCount=========>", lineCount)
   if (!text) return
 
   const classAry = getClassAry(text)
-  console.log("classAry=========>", classAry)
+  // console.log("classAry=========>", classAry)
 
   if (!classAry.length) return
 
   const styles = getStyle(classAry)
-  console.log("styles===========.", styles)
+  // console.log("styles===========.", styles)
 
   // editor.edit((TextEditorEdit) => {
   //   TextEditorEdit.insert(new vscode.Position(lineCount, 0), `\n<style>\n${css}</style>`)

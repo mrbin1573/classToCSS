@@ -1,6 +1,7 @@
 const flexMap = require("./classMap")
 const classMap = require("./classMap")
 const { suffix, ratio } = require("./config")
+const allStyleCatch = new Set()
 
 const getStyle = (classAry) => {
   return classAry.reduce((acc, cur) => {
