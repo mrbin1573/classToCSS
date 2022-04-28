@@ -10,8 +10,18 @@ const renderCSS = function () {
   const text = editor.document.getText()
   const lineCount = editor.document.lineCount
 
+  console.log("text=========>", text)
+  console.log("lineCount=========>", lineCount)
+  if (!text) return
+
   const classAry = getClassAry(text)
+  console.log("classAry=========>", classAry)
+
+  if (!classAry.length) return
+
   const styles = getStyle(classAry)
+  console.log("styles===========.", styles)
+
   // editor.edit((TextEditorEdit) => {
   //   TextEditorEdit.insert(new vscode.Position(lineCount, 0), `\n<style>\n${css}</style>`)
   // })
