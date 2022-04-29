@@ -59,12 +59,12 @@ const autoLinkCSSFile = () => {
     if (!res.length) return
     const { fsPath } = res[0]
     let text = await getTextFromFilePath(fsPath, true)
-    const insertLinkStr = '<link rel="stylesheet" href="/classToCss.css">'
+    const insertLinkStr = '<link rel="stylesheet" href="/classToCss.css"'
     const hasInserted = text.includes(insertLinkStr)
 
     if (hasInserted) return
 
-    text = text.replace("</head>", `    ${insertLinkStr}`)
+    text = text.replace("</head>", `  ${insertLinkStr}/>\n</head>`)
     writeStringToPath(text, fsPath)
   })
 }

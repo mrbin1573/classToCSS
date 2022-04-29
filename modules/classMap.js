@@ -31,18 +31,18 @@ const classMap = {
   left: { styleName: "left", hasSuffix: true, valueType: "value", placeholder: "Number" },
 
   // position
-  static: { styleName: "position", valueType: "key", placeholder: "|" },
-  relative: { styleName: "position", valueType: "key", placeholder: "|" },
-  absolute: { styleName: "position", valueType: "key", placeholder: "|" },
-  sticky: { styleName: "position", valueType: "key", placeholder: "|" },
-  fixed: { styleName: "position", valueType: "key", placeholder: "|" },
+  static: { styleName: "position", valueType: "key", placeholder: "" },
+  relative: { styleName: "position", valueType: "key", placeholder: "" },
+  absolute: { styleName: "position", valueType: "key", placeholder: "" },
+  sticky: { styleName: "position", valueType: "key", placeholder: "" },
+  fixed: { styleName: "position", valueType: "key", placeholder: "" },
 
-  inline: { styleName: "display", valueType: "key", placeholder: "|" },
-  "inline-block": { styleName: "display", valueType: "key", placeholder: "|" },
-  block: { styleName: "display", valueType: "key", placeholder: "|" },
-  flex: { styleName: "display", valueType: "key", placeholder: "|" },
+  inline: { styleName: "display", valueType: "key", placeholder: "" },
+  "inline-block": { styleName: "display", valueType: "key", placeholder: "" },
+  block: { styleName: "display", valueType: "key", placeholder: "" },
+  flex: { styleName: "display", valueType: "key", placeholder: "" },
 
-  justify: { styleName: "justify-content", prefix: "space-", valueType: "value", placeholder: "|" },
+  justify: { styleName: "justify-content", prefix: "", valueType: "value", placeholder: "|" },
   align: { styleName: "align-items", valueType: "value", placeholder: "|" },
 
   // radius

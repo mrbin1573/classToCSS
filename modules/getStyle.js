@@ -8,7 +8,7 @@ const { suffix, ratio } = require("./config")
  */
 const getStyle = (classAry) => {
   return classAry.reduce((allStyle, classStr) => {
-    const params = /(\w+)\-(.*)(\!{1})?/gi.exec(classStr)
+    const params = /(\w+)\-?(.*)/gi.exec(classStr)
 
     if (!params) return allStyle
 
