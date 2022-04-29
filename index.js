@@ -1,11 +1,11 @@
 const vscode = require("vscode")
 const renderCSS = require("./modules/renderCSS")
+const { getTextFromFilePath, writeStringToPath, autoLinkCSSFile } = require("./modules/utils")
 
-/**
- * @param {vscode.ExtensionContext} context
- */
-function activate(context) {
+async function activate() {
   renderCSS()
+
+  autoLinkCSSFile()
 
   vscode.workspace.onDidSaveTextDocument(() => {
     renderCSS()

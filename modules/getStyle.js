@@ -7,18 +7,17 @@ const { suffix, ratio } = require("./config")
  * @return {String} css
  */
 const getStyle = (classAry) => {
-  console.log(classAry)
   return classAry.reduce((allStyle, classStr) => {
-    const params = /(\w+)\-(.*)/gi.exec(classStr)
+    const params = /(\w+)\-(.*)(\!{1})?/gi.exec(classStr)
 
     if (!params) return allStyle
 
-    const [, key, classValue] = params
+    const [, key, classValue, isImportant] = params
     const mapInfo = classMap[key]
 
     if (!mapInfo) return allStyle
 
-    const { styleName, valuePrefix /** style值的前缀 */, hasSuffix /**后缀单位[px] */, valueType } = mapInfo
+    const { styleName, prefix /** style值的前缀 */, hasSuffix /**后缀单位[px] */, valueType } = mapInfo
     const isClassValue = valueType === "value" // class'-'后面的值
     const isKeyValue = valueType === "key" //class'-'前面的值
     const isPercent = valueType === "percent" // class'-'后面的值/100
@@ -27,8 +26,7 @@ const getStyle = (classAry) => {
     isClassValue && !isNaN(styleValue) && (styleValue *= ratio) // 取xx-value数字值的进行缩放
     hasSuffix && (styleValue += suffix) // 后缀单位
 
-    const cssName = `${key}${classValue ? `-${classValue}` : ""}`
-    allStyle += `.${cssName} { ${styleName}: ${valuePrefix ? valuePrefix : ""}${styleValue}; }\n`
+    allStyle += `.${classStr} { ${styleName}: ${prefix ? prefix : ""}${styleValue}${!!isImportant ? "!important" : ""}; }\n`
 
     return allStyle
   }, "")
