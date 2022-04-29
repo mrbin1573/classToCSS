@@ -1,3 +1,10 @@
+/**
+ * valueType
+ *  - value   class="xx-value"
+ *  - key     class="key-value"
+ *  - percent value/100
+ * hasSuffix 是否有单位后缀
+ */
 const classMap = {
   // margin
   m: { styleName: "margin", hasSuffix: true, valueType: "value" },
@@ -41,15 +48,11 @@ const classMap = {
   // radius
   radius: { styleName: "border-radius", hasSuffix: true, valueType: "value" },
 
-  // font-size
+  // font
   fs: { styleName: "font-size", hasSuffix: true, valueType: "value" },
   "font-size": { styleName: "font-size", hasSuffix: true, valueType: "value" },
-
-  // font-weight
   fw: { styleName: "font-weight", valueType: "value" },
   "font-weight": { styleName: "font-weight", valueType: "value" },
-
-  // font-family
   fm: { styleName: "font-family", valueType: "value" },
   "font-family": { styleName: "font-family", valueType: "value" },
 
@@ -59,6 +62,9 @@ const classMap = {
 
   // bacground-color
   bg: { styleName: "background-color", valueType: "value" },
+
+  // opacity
+  opacity: { styleName: "opacity", valueType: "percent" },
 }
 
 module.exports = classMap
