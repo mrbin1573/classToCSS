@@ -1,6 +1,4 @@
 const vscode = require("vscode")
-const classMap = require("./modules/classMap.js")
-const getClassAry = require("./modules/getClassAry.js")
 const renderCSS = require("./modules/renderCSS")
 
 /**

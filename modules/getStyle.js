@@ -1,26 +1,36 @@
-const flexMap = require("./classMap")
 const classMap = require("./classMap")
 const { suffix, ratio } = require("./config")
-const allStyleCatch = new Set()
 
+/**
+ * @description: 生成style样式
+ * @param {Array} classAry className数组
+ * @return {String} css
+ */
 const getStyle = (classAry) => {
-  return classAry.reduce((acc, cur) => {
-    const [key, classValue] = cur.split("-")
-    const cssName = `${key}${classValue ? `-${classValue}` : ""}`
+  console.log(classAry)
+  return classAry.reduce((allStyle, classStr) => {
+    const params = /(\w+)\-(.*)/gi.exec(classStr)
+
+    if (!params) return allStyle
+
+    const [, key, classValue] = params
     const mapInfo = classMap[key]
 
-    if (!mapInfo) return acc
-    
+    if (!mapInfo) return allStyle
+
     const { styleName, valuePrefix /** style值的前缀 */, hasSuffix /**后缀单位[px] */, valueType } = mapInfo
-    const isClassValue = valueType === "value" // 直接取class中-后面的值
-    const isKeyValue = valueType === "key" // 直接取class中-前面的值
+    const isClassValue = valueType === "value" // class'-'后面的值
+    const isKeyValue = valueType === "key" //class'-'前面的值
+    const isPercent = valueType === "percent" // class'-'后面的值/100
 
-    let styleValue = (isClassValue && classValue) || (isKeyValue && key)
-    !isNaN(styleValue) && (styleValue *= ratio) // 倍数
+    let styleValue = (isClassValue && classValue) || (isKeyValue && key) || (isPercent && +classValue / 100)
+    isClassValue && !isNaN(styleValue) && (styleValue *= ratio) // 取xx-value数字值的进行缩放
     hasSuffix && (styleValue += suffix) // 后缀单位
-    acc += `.${cssName} { ${styleName}: ${valuePrefix ? valuePrefix : ""}${styleValue}; }\n`
 
-    return acc
+    const cssName = `${key}${classValue ? `-${classValue}` : ""}`
+    allStyle += `.${cssName} { ${styleName}: ${valuePrefix ? valuePrefix : ""}${styleValue}; }\n`
+
+    return allStyle
   }, "")
 }
 
