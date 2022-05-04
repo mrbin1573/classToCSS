@@ -1,7 +1,7 @@
 const vscode = require("vscode")
 const getWorkspaceCSSAry = require("./getWorkspaceCSSAry.js")
 const getStyle = require("./getStyle.js")
-const { stringToUint8Array, writeStringToPath } = require("./utils.js")
+const { writeStringToPath } = require("./utils.js")
 const getLastCSSAry = require("./getLastCSSAry.js")
 let lastClsssNamAry = []
 
@@ -9,10 +9,12 @@ let lastClsssNamAry = []
  * @description: 渲染css到文件
  * @param {*} renderLast 是否渲染上次工作区的数据（如果有）
  */
-const renderCSS = async (renderLast = false) => {
+const renderCSS2File = async (renderLast = false) => {
+  // 编辑区的class
   let classAry = getWorkspaceCSSAry()
   if (!classAry.length) return
 
+  // classToCSS.css已经存在的css
   if (!lastClsssNamAry.length) lastClsssNamAry = await getLastCSSAry()
 
   classAry = [...new Set([...lastClsssNamAry, ...classAry])]
@@ -27,4 +29,4 @@ const renderCSS = async (renderLast = false) => {
   writeStringToPath(styles, vscode.workspace.workspaceFolders[0].uri.fsPath + "\\classToCSS.css")
 }
 
-module.exports = renderCSS
+module.exports = renderCSS2File

@@ -6,7 +6,7 @@ Class automatically converts to CSS and generates global files; You can configur
 
 ## TODO
 
-@group: 聚合多种 class
+@apply 聚合多种 class
 scoped: 不生成全局文件
 !: important
 rotate

@@ -69,10 +69,18 @@ const autoLinkCSSFile = () => {
   })
 }
 
+/**
+ * @description: 字符串是不是纯数字
+ * @param {*} string
+ * @return {*}
+ */
+const isNumberStr = (string) => !Number.isNaN(Number(string))
+
 module.exports = {
   stringToUint8Array,
   uint8ArrayToString,
   getTextFromFilePath,
   writeStringToPath,
+  isNumberStr,
   autoLinkCSSFile,
 }

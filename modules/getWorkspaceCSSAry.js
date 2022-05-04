@@ -1,7 +1,8 @@
 const { window } = require("vscode")
+const classMap = require("./classMap")
+const { acceptLangIds } = require("./config")
 
 // 检测的文件类型
-const acceptLangIds = ["html", "javascript", "vue"]
 const workspaceCSSCatch = new Map() // 所有文件的css缓存
 
 /**
@@ -17,7 +18,7 @@ function getWorkspaceCSSAry() {
   if (!acceptLangIds.some((item) => item === languageId)) return []
   if (!text) return []
 
-  const classReg = /class=['|"]([\w+\d\-\s\#\.\%\!]+)['|"]?/gmi
+  const classReg = /class=['|"]([\w+\d\-*\s\#\.\%]+)['|"]?/gim
   let classStr = []
   text.replace(classReg, ($0, $1) => {
     classStr.push($1)
@@ -25,6 +26,8 @@ function getWorkspaceCSSAry() {
 
   let classAry = classStr.map((str) => str.split(/\s+/g)).flat()
   classAry = [...new Set(classAry)] // 当前编辑区去重
+
+  // TODO无效值不编译
 
   workspaceCSSCatch.set(fileName, classAry)
 
