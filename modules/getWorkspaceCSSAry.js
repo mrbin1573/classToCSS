@@ -15,7 +15,7 @@ function getWorkspaceCSSAry() {
 
   const activeDoc = editor.document
   const text = activeDoc.getText()
-  const { languageId, fileName } = activeDoc
+  const { fileName } = activeDoc
 
   if (!text) return []
 
@@ -25,14 +25,13 @@ function getWorkspaceCSSAry() {
     classStr.push($1)
   })
 
-  let classAry = classStr.map((str) => str.split(/\s+/g)).flat()
-  classAry = [...new Set(classAry)] // 当前编辑区去重
-
+  
   // TODO无效值不编译
-
+  
+  let classAry = classStr.map((str) => str.split(/\s+/g)).flat()
+  
+  // 当前编辑区和文件间交叉去重
   workspaceCSSCatch.set(fileName, classAry)
-
-  // 文件间交叉去重
   const resSet = new Set()
   for (const [_, _classAry] of workspaceCSSCatch) {
     _classAry.forEach((className) => resSet.add(className))

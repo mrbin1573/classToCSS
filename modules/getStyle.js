@@ -17,23 +17,29 @@ const getStyle = (classAry) => {
      * 若无再匹配key
      * 若都无，则不合规则
      */
-    const [, key, classValue] = params
+    let [, key, classValue] = params
     let mapInfo = classMap.get(className)
     if (!mapInfo) mapInfo = classMap.get(key)
     if (!mapInfo) return allStyle
 
-    const { styleName, prefix /** style值的前缀 */, hasUnit /**后缀单位[px] */, valType } = mapInfo
+    const { styleName, preStyle, hasUnit, valType, valueMapper } = mapInfo
     const isCValue = valType === "classNameValue" // class="xx-value"
     const isCKey = valType === "classNameKey" // class="key-xx"
     const isCPercent = valType === "percent" // class="xx-value" => value/100
     const isCName = valType === "className" // class='value'
+    const isFull = classValue === "full" // class='value'
+    valueMapper && (classValue = valueMapper[classValue] || classValue)
 
-    let styleValue =
-      (isCValue && classValue) || (isCKey && key) || (isCPercent && +classValue / 100) || (isCName && className)
-    isCValue && isNumberStr(styleValue) && (styleValue *= valueRatio) // 取xx-value数字值的进行缩放
-    hasUnit && (styleValue += unit) // 后缀单位
+    let styleValue
+    if (isFull) {
+      styleValue = "100%"
+    } else {
+      styleValue = (isCValue && classValue) || (isCKey && key) || (isCPercent && +classValue / 100) || (isCName && className)
+      isCValue && isNumberStr(styleValue) && (styleValue *= valueRatio) // 取xx-value数字值的进行缩放
+      hasUnit && (styleValue += unit) // 后缀单位
+    }
 
-    allStyle += `.${className} { ${styleName}: ${prefix ? prefix : ""}${styleValue}; }\n`
+    allStyle += `.${className} { ${preStyle ? preStyle : ""}${styleName}: ${styleValue}; }\n`
 
     return allStyle
   }, "")

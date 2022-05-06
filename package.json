@@ -2,7 +2,7 @@
   "name": "classtocss",
   "displayName": "classtocss",
   "description": "Class automatically converts to CSS",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "license": "MIT",
   "licenseUrl": "LICENSE",
   "engines": {
@@ -58,7 +58,7 @@
         },
         "classtocss.valueRatio": {
           "type": "number",
-          "default": "1",
+          "default": 1,
           "description": "数值的缩放比例(The scaling ratio of the value)。eg: top-20 => top: (20 * valueRatio) + unit"
         }
       }

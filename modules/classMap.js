@@ -7,6 +7,7 @@
  *          - value     class="xx-value"
  *          - percent   value/100
  *          - className class="value"
+ *        valueMapper 如有，则取值的按此匹配
  *    hasUnit 是否有单位后缀，对应config.unit
  *    placeholder snippets：enter后聚焦的提示内容
  *    accept 校验
@@ -18,6 +19,9 @@ const classMap = new Map([
   ["mr", { styleName: "margin-right", hasUnit: true, valType: "classNameValue", placeholder: "Number", accept: [Number] }],
   ["mb", { styleName: "margin-bottom", hasUnit: true, valType: "classNameValue", placeholder: "Number", accept: [Number] }],
   ["ml", { styleName: "margin-left", hasUnit: true, valType: "classNameValue", placeholder: "Number", accept: [Number] }],
+
+  ["w", { styleName: "width", hasUnit: true, valType: "classNameValue", placeholder: "Number", accept: [Number] }],
+  ["h", { styleName: "height", hasUnit: true, valType: "classNameValue", placeholder: "Number", accept: [Number] }],
 
   ["p", { styleName: "padding", hasUnit: true, valType: "classNameValue", placeholder: "Number", accept: [Number] }],
   ["pt", { styleName: "padding-top", hasUnit: true, valType: "classNameValue", placeholder: "Number", accept: [Number] }],
@@ -41,17 +45,36 @@ const classMap = new Map([
   ["block", { styleName: "display", valType: "className", placeholder: "", accept: [String] }],
   ["flex", { styleName: "display", valType: "className", placeholder: "", accept: [String] }],
 
-  ["justify", { styleName: "justify-content", prefix: "", valType: "classNameValue", placeholder: "|", accept: [String] }],
-  ["align", { styleName: "align-items", valType: "classNameValue", placeholder: "|", accept: [String] }],
+  [
+    "justify",
+    {
+      styleName: "justify-content",
+      preStyle: "display: flex; ",
+      valType: "classNameValue",
+      valueMapper: {
+        start: "flex-start",
+        end: "flex-end",
+        between: "space-between",
+        around: "space-around",
+        evenly: "space-evenly",
+      },
+      placeholder: "|",
+      accept: [String],
+    },
+  ],
+  ["align", { styleName: "align-items", preStyle: "display: flex; ", valType: "classNameValue", placeholder: "|", accept: [String] }],
+  ["flex-row", { styleName: "flex-direction", preStyle: "display: flex; ", valType: "classNameValue", placeholder: "|", accept: [String] }],
+  ["flex-column", { styleName: "flex-direction", preStyle: "display: flex; ", valType: "classNameValue", placeholder: "|", accept: [String] }],
+  ["flex-wrap", { styleName: "flex-wrap", preStyle: "display: flex; ", valType: "classNameValue", placeholder: "|", accept: [String] }],
 
-  ["radius", { styleName: "border-radius", hasUnit: true, valType: "classNameValue", placeholder: "Number", accept: [Number] }],
+  ["radius", { styleName: "border-radius", hasUnit: true, preStyle: "overflow: hidden; ", valType: "classNameValue", placeholder: "Number", accept: [Number] }],
 
   ["fs", { styleName: "font-size", hasUnit: true, valType: "classNameValue", placeholder: "Number", accept: [Number] }],
   ["fw", { styleName: "font-weight", valType: "classNameValue", placeholder: "Number|String", accept: [Number, String] }],
   ["fm", { styleName: "font-family", valType: "classNameValue", placeholder: "String", accept: [String] }],
   ["color", { styleName: "color", valType: "classNameValue", placeholder: "String", accept: [String] }],
 
-  ["bg", { styleName: "background-color", valType: "classNameValue", placeholder: "String", accept: [String] }],
+  ["bgcolor", { styleName: "background-color", valType: "classNameValue", placeholder: "String", accept: [String] }],
 
   ["opacity", { styleName: "opacity", valType: "percent", placeholder: "0~100", accept: [Number] }],
   ["transition", { styleName: "transition", valType: "percent", unit: "ms", placeholder: "ms", accept: [Number] }],
