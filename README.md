@@ -8,7 +8,8 @@ Class automatically converts to CSS and generates global files; You can configur
 
 @apply 聚合多种 class
 scoped: 不生成全局文件
-!: important
-rotate
 transform
 transition
+
+## 已知问题
+ - vue无代码提示（vetur导致）

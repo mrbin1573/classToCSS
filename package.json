@@ -2,7 +2,7 @@
   "name": "classtocss",
   "displayName": "classtocss",
   "description": "Class automatically converts to CSS",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "license": "MIT",
   "licenseUrl": "LICENSE",
   "engines": {
@@ -32,19 +32,39 @@
   ],
   "activationEvents": [
     "onLanguage:html",
+    "onLanguage:jade",
     "onLanguage:vue",
     "onLanguage:vue-html",
-    "onLanguage:typescript",
-    "onLanguage:typescriptreact",
     "onLanguage:javascript",
+    "onLanguage:typescriptreact",
     "onLanguage:javascriptreact"
   ],
-  "repository": "",
+  "repository": "https://github.com/mrbin1573/classToCss",
   "main": "./index.js",
   "contributes": {
     "snippets": [
       {
+        "language": "vue",
+        "path": "./snippets.json"
+      },
+      {
         "language": "html",
+        "path": "./snippets.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./snippets.json"
+      },
+      {
+        "language": "jade",
+        "path": "./snippets.json"
+      },
+      {
+        "language": "typescriptreact",
+        "path": "./snippets.json"
+      },
+      {
+        "language": "javascriptreact",
         "path": "./snippets.json"
       }
     ],
