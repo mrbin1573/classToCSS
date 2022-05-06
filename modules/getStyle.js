@@ -1,5 +1,5 @@
+const { workspace } = require("vscode")
 const classMap = require("./classMap")
-const { suffix, ratio } = require("./config")
 const { isNumberStr } = require("./utils")
 
 /**
@@ -8,10 +8,10 @@ const { isNumberStr } = require("./utils")
  * @return {String} css
  */
 const getStyle = (classAry) => {
+  const { unit, valueRatio } = workspace.getConfiguration("classtocss")
   return classAry.reduce((allStyle, className) => {
     const params = /(\w+)\-?(.*)/gi.exec(className)
     if (!params) return allStyle
-
     /**
      * className全名匹配
      * 若无再匹配key
@@ -20,9 +20,9 @@ const getStyle = (classAry) => {
     const [, key, classValue] = params
     let mapInfo = classMap.get(className)
     if (!mapInfo) mapInfo = classMap.get(key)
-    if (!mapInfo) return
+    if (!mapInfo) return allStyle
 
-    const { styleName, prefix /** style值的前缀 */, hasSuffix /**后缀单位[px] */, valType } = mapInfo
+    const { styleName, prefix /** style值的前缀 */, hasUnit /**后缀单位[px] */, valType } = mapInfo
     const isCValue = valType === "classNameValue" // class="xx-value"
     const isCKey = valType === "classNameKey" // class="key-xx"
     const isCPercent = valType === "percent" // class="xx-value" => value/100
@@ -30,8 +30,8 @@ const getStyle = (classAry) => {
 
     let styleValue =
       (isCValue && classValue) || (isCKey && key) || (isCPercent && +classValue / 100) || (isCName && className)
-    isCValue && isNumberStr(styleValue) && (styleValue *= ratio) // 取xx-value数字值的进行缩放
-    hasSuffix && (styleValue += suffix) // 后缀单位
+    isCValue && isNumberStr(styleValue) && (styleValue *= valueRatio) // 取xx-value数字值的进行缩放
+    hasUnit && (styleValue += unit) // 后缀单位
 
     allStyle += `.${className} { ${styleName}: ${prefix ? prefix : ""}${styleValue}; }\n`
 
