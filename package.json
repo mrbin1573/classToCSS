@@ -1,17 +1,43 @@
 {
   "name": "classtocss",
   "displayName": "classtocss",
-  "description": "class自动生成css",
-  "version": "0.0.5",
+  "description": "Class automatically converts to CSS",
+  "version": "0.0.6",
+  "license": "MIT",
+  "licenseUrl": "LICENSE",
   "engines": {
     "vscode": "^1.54.0"
   },
   "publisher": "classToCss",
   "categories": [
+    "Formatters",
+    "Data Science",
     "Other"
   ],
+  "keywords": [
+    "class to style",
+    "class to css",
+    "automatically style",
+    "automatically css",
+    "px",
+    "rem",
+    "rpx",
+    "vw",
+    "class",
+    "css",
+    "sass",
+    "scss",
+    "less",
+    "vh"
+  ],
   "activationEvents": [
-    "*"
+    "onLanguage:html",
+    "onLanguage:vue",
+    "onLanguage:vue-html",
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onLanguage:javascript",
+    "onLanguage:javascriptreact"
   ],
   "repository": "",
   "main": "./index.js",
@@ -21,7 +47,22 @@
         "language": "html",
         "path": "./snippets.json"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "classtocss configuration",
+      "properties": {
+        "classtocss.unit": {
+          "type": "string",
+          "default": "px",
+          "description": "数值的单位(Unit of value)。eg: top-20 => top: (20 * valueRatio) + unit"
+        },
+        "classtocss.valueRatio": {
+          "type": "number",
+          "default": "1",
+          "description": "数值的缩放比例(The scaling ratio of the value)。eg: top-20 => top: (20 * valueRatio) + unit"
+        }
+      }
+    }
   },
   "scripts": {
     "lint": "eslint .",
