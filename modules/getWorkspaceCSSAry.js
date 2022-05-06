@@ -1,6 +1,5 @@
 const { window } = require("vscode")
 const classMap = require("./classMap")
-const { acceptLangIds } = require("./config")
 
 // 检测的文件类型
 const workspaceCSSCatch = new Map() // 所有文件的css缓存
@@ -11,11 +10,13 @@ const workspaceCSSCatch = new Map() // 所有文件的css缓存
  */
 function getWorkspaceCSSAry() {
   const editor = window.activeTextEditor
+
+  if (!editor) return []
+
   const activeDoc = editor.document
   const text = activeDoc.getText()
   const { languageId, fileName } = activeDoc
 
-  if (!acceptLangIds.some((item) => item === languageId)) return []
   if (!text) return []
 
   const classReg = /class=['|"]([\w+\d\-*\s\#\.\%]+)['|"]?/gim
