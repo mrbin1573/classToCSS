@@ -3,6 +3,7 @@ const getWorkspaceCSSAry = require("./getWorkspaceCSSAry.js")
 const getStyle = require("./getStyle.js")
 const { writeStringToPath } = require("./utils.js")
 const getLastCSSAry = require("./getLastCSSAry.js")
+const { generateCSSFileName } = require("./config.js")
 let lastClsssNamAry = []
 
 /**
@@ -26,7 +27,7 @@ const renderCSS2File = async (renderLast = false) => {
   //   TextEditorEdit.insert(new vscode.Position(lineCount, 0), `\n<style>\n${styles}</style>`)
   // })
 
-  writeStringToPath(styles, vscode.workspace.workspaceFolders[0].uri.fsPath + "\\classToCSS.css")
+  styles && writeStringToPath(styles, vscode.workspace.workspaceFolders[0].uri.fsPath + "\\" + generateCSSFileName)
 }
 
 module.exports = renderCSS2File

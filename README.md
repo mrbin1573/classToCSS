@@ -1,8 +1,8 @@
 ## Features
 
-## class 自动转换为 css，并生成全局文件；可配置单位和值的缩放比例
+## class 自动转换为 css，并生成全局文件；可配置单位，值的缩放比例
 
-Class automatically converts to CSS and generates global files; You can configure the scaling of units and values
+> 根目录生成 classtocss.css 文件，需要手动引入才能生效
 
 ## TODO
 
@@ -12,4 +12,5 @@ transform
 transition
 
 ## 已知问题
- - vue无代码提示（vetur导致）
+
+- vue 无代码提示（vetur 导致）

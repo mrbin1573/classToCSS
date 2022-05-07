@@ -1,4 +1,5 @@
 const { Uri, workspace } = require("vscode")
+const { generateCSSFileName } = require("./config")
 
 /**
  * @description: String转uint8array
@@ -47,19 +48,19 @@ const getTextFromFilePath = (path, isFullPath = false) => {
  * @param {String} pullPath
  */
 const writeStringToPath = (string, pullPath) => {
-  const fileUri = Uri.file(pullPath || workspace.workspaceFolders[0].uri.fsPath + "\\classToCSS.css")
+  const fileUri = Uri.file(pullPath)
   workspace.fs.writeFile(fileUri, stringToUint8Array(string))
 }
 
 /**
- * @description: 自动判断并引入生成的classToCss.css
+ * @description: 自动判断并引入生成的classToCss.css到index.html
  */
 const autoLinkCSSFile = () => {
   workspace.findFiles("index.html", "**​/node_modules/**", 1).then(async (res) => {
     if (!res.length) return
     const { fsPath } = res[0]
     let text = await getTextFromFilePath(fsPath, true)
-    const insertLinkStr = '<link rel="stylesheet" href="/classToCss.css"'
+    const insertLinkStr = `<link rel="stylesheet" href="/${generateCSSFileName}"`
     const hasInserted = text.includes(insertLinkStr)
 
     if (hasInserted) return
