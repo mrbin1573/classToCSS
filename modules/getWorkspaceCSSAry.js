@@ -25,11 +25,8 @@ function getWorkspaceCSSAry() {
     classStr.push($1)
   })
 
-  
-  // TODO无效值不编译
-  
   let classAry = classStr.map((str) => str.split(/\s+/g)).flat()
-  
+
   // 当前编辑区和文件间交叉去重
   workspaceCSSCatch.set(fileName, classAry)
   const resSet = new Set()

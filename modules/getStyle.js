@@ -22,7 +22,7 @@ const getStyle = (classAry) => {
     if (!mapInfo) mapInfo = classMap.get(classKey)
     if (!mapInfo) return allStyle
 
-    const { styleName, preStyle, hasUnit, valType, valueMapper, willRatio, unit: localUnit } = mapInfo
+    const { styleName, preStyle, hasUnit, valType, valueMapper, willRatio, unit: localUnit, accept: acceptRegAry } = mapInfo
     const isCNValue = valType === "classNameValue"
     const isCPercent = valType === "percent"
     const isCName = valType === "className"
@@ -34,16 +34,17 @@ const getStyle = (classAry) => {
     if (isFull) {
       styleValue = "100%"
     } else {
-      styleValue =
-        (isCNValue && classValue) ||
-        (isCPercent && +classValue / 100) ||
-        (isCName && className) ||
-        (isBracket && `${classKey}(${classValue})`)
+      styleValue = (isCNValue && classValue) || (isCPercent && +classValue) || (isCName && className) || (isBracket && `${classKey}(${classValue})`)
+
+      // 校验
+      if (acceptRegAry.every((reg) => !reg.test(styleValue))) return allStyle
+
+      // 通过校验再处理值
+      isCPercent && (styleValue = styleValue / 100)
       willRatio && isNumberStr(styleValue) && (styleValue *= valueRatio)
+
       if (hasUnit) {
-        isBracket
-          ? (styleValue = styleValue.replace(")", `${localUnit || unit})`)) /**括号中添加单位 */
-          : (styleValue += localUnit || unit)
+        isBracket ? (styleValue = styleValue.replace(")", `${localUnit || unit})`)) /**括号中添加单位 */ : (styleValue += localUnit || unit)
       }
     }
 

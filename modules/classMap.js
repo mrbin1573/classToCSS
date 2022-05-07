@@ -13,198 +13,40 @@
  *    placeholder snippets：enter后聚焦的提示内容
  *    accept 校验
  */
-// TODO accept
+const NUMBER_REG = /^\d+$/ // 数字
+const HUNDRED_REG = /^[1-9]{1}0{2}$/ // 100~900
+const STRING_REG = /\D+/ // 非数字的字符串
 const classMap = new Map([
-  [
-    "m",
-    {
-      styleName: "margin",
-      hasUnit: true,
-      willRatio: true,
-      valType: "classNameValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
-  [
-    "mt",
-    {
-      styleName: "margin-top",
-      hasUnit: true,
-      willRatio: true,
-      valType: "classNameValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
-  [
-    "mr",
-    {
-      styleName: "margin-right",
-      hasUnit: true,
-      willRatio: true,
-      valType: "classNameValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
-  [
-    "mb",
-    {
-      styleName: "margin-bottom",
-      hasUnit: true,
-      willRatio: true,
-      valType: "classNameValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
-  [
-    "ml",
-    {
-      styleName: "margin-left",
-      hasUnit: true,
-      willRatio: true,
-      valType: "classNameValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
+  ["m", { styleName: "margin", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
+  ["mt", { styleName: "margin-top", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
+  ["mr", { styleName: "margin-right", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
+  ["mb", { styleName: "margin-bottom", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
+  ["ml", { styleName: "margin-left", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
 
-  [
-    "w",
-    {
-      styleName: "width",
-      hasUnit: true,
-      willRatio: true,
-      valType: "classNameValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
-  [
-    "h",
-    {
-      styleName: "height",
-      hasUnit: true,
-      willRatio: true,
-      valType: "classNameValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
+  ["w", { styleName: "width", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
+  ["h", { styleName: "height", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
 
-  [
-    "p",
-    {
-      styleName: "padding",
-      hasUnit: true,
-      willRatio: true,
-      valType: "classNameValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
-  [
-    "pt",
-    {
-      styleName: "padding-top",
-      hasUnit: true,
-      willRatio: true,
-      valType: "classNameValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
-  [
-    "pr",
-    {
-      styleName: "padding-right",
-      hasUnit: true,
-      willRatio: true,
-      valType: "classNameValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
-  [
-    "pb",
-    {
-      styleName: "padding-bottom",
-      hasUnit: true,
-      willRatio: true,
-      valType: "classNameValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
-  [
-    "pl",
-    {
-      styleName: "padding-left",
-      hasUnit: true,
-      willRatio: true,
-      valType: "classNameValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
+  ["p", { styleName: "padding", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
+  ["pt", { styleName: "padding-top", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
+  ["pr", { styleName: "padding-right", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
+  ["pb", { styleName: "padding-bottom", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
+  ["pl", { styleName: "padding-left", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
 
-  [
-    "top",
-    {
-      styleName: "top",
-      hasUnit: true,
-      willRatio: true,
-      valType: "classNameValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
-  [
-    "right",
-    {
-      styleName: "right",
-      hasUnit: true,
-      willRatio: true,
-      valType: "classNameValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
-  [
-    "bottom",
-    {
-      styleName: "bottom",
-      hasUnit: true,
-      willRatio: true,
-      valType: "classNameValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
-  [
-    "left",
-    {
-      styleName: "left",
-      hasUnit: true,
-      willRatio: true,
-      valType: "classNameValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
+  ["top", { styleName: "top", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
+  ["right", { styleName: "right", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
+  ["bottom", { styleName: "bottom", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
+  ["left", { styleName: "left", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
 
-  ["static", { styleName: "position", valType: "className", placeholder: "", accept: [String] }],
-  ["relative", { styleName: "position", valType: "className", placeholder: "", accept: [String] }],
-  ["absolute", { styleName: "position", valType: "className", placeholder: "", accept: [String] }],
-  ["sticky", { styleName: "position", valType: "className", placeholder: "", accept: [String] }],
-  ["fixed", { styleName: "position", valType: "className", placeholder: "", accept: [String] }],
+  ["static", { styleName: "position", valType: "className", placeholder: "", accept: [STRING_REG] }],
+  ["relative", { styleName: "position", valType: "className", placeholder: "", accept: [STRING_REG] }],
+  ["absolute", { styleName: "position", valType: "className", placeholder: "", accept: [STRING_REG] }],
+  ["sticky", { styleName: "position", valType: "className", placeholder: "", accept: [STRING_REG] }],
+  ["fixed", { styleName: "position", valType: "className", placeholder: "", accept: [STRING_REG] }],
 
-  ["inline", { styleName: "display", valType: "className", placeholder: "", accept: [String] }],
-  ["inline-block", { styleName: "display", valType: "className", placeholder: "", accept: [String] }],
-  ["block", { styleName: "display", valType: "className", placeholder: "", accept: [String] }],
-  ["flex", { styleName: "display", valType: "className", placeholder: "", accept: [String] }],
+  ["inline", { styleName: "display", valType: "className", placeholder: "", accept: [STRING_REG] }],
+  ["inline-block", { styleName: "display", valType: "className", placeholder: "", accept: [STRING_REG] }],
+  ["block", { styleName: "display", valType: "className", placeholder: "", accept: [STRING_REG] }],
+  ["flex", { styleName: "display", valType: "className", placeholder: "", accept: [STRING_REG] }],
 
   [
     "justify",
@@ -212,137 +54,37 @@ const classMap = new Map([
       styleName: "justify-content",
       preStyle: "display: flex; ",
       valType: "classNameValue",
-      valueMapper: {
-        start: "flex-start",
-        end: "flex-end",
-        between: "space-between",
-        around: "space-around",
-        evenly: "space-evenly",
-      },
+      valueMapper: { start: "flex-start", end: "flex-end", between: "space-between", around: "space-around", evenly: "space-evenly" },
       placeholder: "|",
-      accept: [String],
+      accept: [STRING_REG],
     },
   ],
-  [
-    "align",
-    {
-      styleName: "align-items",
-      preStyle: "display: flex; ",
-      valType: "classNameValue",
-      placeholder: "|",
-      accept: [String],
-    },
-  ],
-  [
-    "flex-row",
-    {
-      styleName: "flex-direction",
-      preStyle: "display: flex; ",
-      valType: "classNameValue",
-      placeholder: "|",
-      accept: [String],
-    },
-  ],
-  [
-    "flex-column",
-    {
-      styleName: "flex-direction",
-      preStyle: "display: flex; ",
-      valType: "classNameValue",
-      placeholder: "|",
-      accept: [String],
-    },
-  ],
-  [
-    "flex-wrap",
-    {
-      styleName: "flex-wrap",
-      preStyle: "display: flex; ",
-      valType: "classNameValue",
-      placeholder: "|",
-      accept: [String],
-    },
-  ],
+  ["align", { styleName: "align-items", preStyle: "display: flex; ", valType: "classNameValue", placeholder: "|", accept: [STRING_REG] }],
+  ["flex-row", { styleName: "flex-direction", preStyle: "display: flex; ", valType: "classNameValue", placeholder: "|", accept: [STRING_REG] }],
+  ["flex-column", { styleName: "flex-direction", preStyle: "display: flex; ", valType: "classNameValue", placeholder: "|", accept: [STRING_REG] }],
+  ["flex-wrap", { styleName: "flex-wrap", preStyle: "display: flex; ", valType: "classNameValue", placeholder: "|", accept: [STRING_REG] }],
 
   [
     "radius",
-    {
-      styleName: "border-radius",
-      hasUnit: true,
-      willRatio: true,
-      preStyle: "overflow: hidden; ",
-      valType: "classNameValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
+    { styleName: "border-radius", hasUnit: true, willRatio: true, preStyle: "overflow: hidden; ", valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] },
   ],
 
-  [
-    "fs",
-    {
-      styleName: "font-size",
-      hasUnit: true,
-      willRatio: true,
-      valType: "classNameValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
-  [
-    "fw",
-    { styleName: "font-weight", valType: "classNameValue", placeholder: "Number|String", accept: [Number, String] },
-  ],
-  ["fm", { styleName: "font-family", valType: "classNameValue", placeholder: "String", accept: [String] }],
-  ["color", { styleName: "color", valType: "classNameValue", placeholder: "String", accept: [String] }],
+  ["fs", { styleName: "font-size", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
+  ["fw", { styleName: "font-weight", valType: "classNameValue", placeholder: "number|string", accept: [HUNDRED_REG, STRING_REG] }],
+  ["fm", { styleName: "font-family", valType: "classNameValue", placeholder: "string", accept: [STRING_REG] }],
+  ["color", { styleName: "color", valType: "classNameValue", placeholder: "string", accept: [STRING_REG] }],
 
-  ["bgcolor", { styleName: "background-color", valType: "classNameValue", placeholder: "String", accept: [String] }],
+  ["bgcolor", { styleName: "background-color", valType: "classNameValue", placeholder: "string", accept: [STRING_REG] }],
 
-  ["opacity", { styleName: "opacity", valType: "percent", placeholder: "0~100", accept: [Number] }],
-  [
-    "transition",
-    {
-      styleName: "transition",
-      valType: "classNameValue",
-      hasUnit: true,
-      unit: "ms",
-      placeholder: "ms",
-      accept: [Number],
-    },
-  ],
+  ["opacity", { styleName: "opacity", valType: "percent", placeholder: "0~100", accept: [NUMBER_REG] }],
+  ["transition", { styleName: "transition", valType: "classNameValue", hasUnit: true, unit: "ms", placeholder: "ms", accept: [NUMBER_REG] }],
 
-  [
-    "rotate",
-    {
-      styleName: "transform",
-      valType: "classBracketValue",
-      hasUnit: true,
-      unit: "deg",
-      placeholder: "deg",
-      accept: [Number],
-    },
-  ],
-  [
-    "translateX",
-    {
-      styleName: "transform",
-      valType: "classBracketValue",
-      hasUnit: true,
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
-  [
-    "scale",
-    {
-      styleName: "transform",
-      valType: "classBracketValue",
-      placeholder: "Number",
-      accept: [Number],
-    },
-  ],
+  ["rotate", { styleName: "transform", valType: "classBracketValue", hasUnit: true, unit: "deg", placeholder: "deg", accept: [NUMBER_REG] }],
+  ["translateX", { styleName: "transform", valType: "classBracketValue", hasUnit: true, placeholder: "number", accept: [NUMBER_REG] }],
+  ["scale", { styleName: "transform", valType: "classBracketValue", placeholder: "number", accept: [NUMBER_REG] }],
 
-  ["border-box", { styleName: "box-sizing", valType: "className", placeholder: "", accept: [String] }],
-  ["content-box", { styleName: "box-sizing", valType: "className", placeholder: "", accept: [String] }],
+  ["border-box", { styleName: "box-sizing", valType: "className", placeholder: "", accept: [STRING_REG] }],
+  ["content-box", { styleName: "box-sizing", valType: "className", placeholder: "", accept: [STRING_REG] }],
 ])
 
 const generateSnippetsJSON = () => {
@@ -357,7 +99,7 @@ const generateSnippetsJSON = () => {
     }
   })
 
-  console.log(JSON.stringify(jsonObj))
+  console.log("snippets.json=====>", JSON.stringify(jsonObj))
 }
 // generateSnippetsJSON() // 需要生成提示时，执行一下，在【调试控制台】查看结果
 
