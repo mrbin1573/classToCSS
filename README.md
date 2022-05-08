@@ -14,3 +14,5 @@ transition
 ## 已知问题
 
 - vue 无代码提示（vetur 导致）
+- flex-
+- class特殊符号如color,%无效

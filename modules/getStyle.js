@@ -30,22 +30,19 @@ const getStyle = (classAry) => {
     const isFull = classValue === "full"
     valueMapper && (classValue = valueMapper[classValue] || classValue) // 值需要再次转换
 
-    let styleValue
-    if (isFull) {
-      styleValue = "100%"
-    } else {
-      styleValue = (isCNValue && classValue) || (isCPercent && +classValue) || (isCName && className) || (isBracket && `${classKey}(${classValue})`)
+    let styleValue = (isCNValue && classValue) || (isCPercent && +classValue) || (isCName && className) || (isBracket && `${classValue}`)
 
-      // 校验
-      if (acceptRegAry.every((reg) => !reg.test(styleValue))) return allStyle
+    // 校验
+    if (acceptRegAry.every((reg) => !reg.test(styleValue))) return allStyle
 
-      // 通过校验再处理值
-      isCPercent && (styleValue = styleValue / 100)
-      willRatio && isNumberStr(styleValue) && (styleValue *= valueRatio)
+    // 通过校验再处理值
+    willRatio && isNumberStr(styleValue) && (styleValue *= valueRatio)
+    isCPercent && (styleValue = styleValue / 100)
+    isFull && (styleValue = "100%")
+    isBracket && (styleValue = `${classKey}(${classValue})`)
 
-      if (hasUnit) {
-        isBracket ? (styleValue = styleValue.replace(")", `${localUnit || unit})`)) /**括号中添加单位 */ : (styleValue += localUnit || unit)
-      }
+    if (hasUnit && !isFull) {
+      isBracket ? (styleValue = styleValue.replace(")", `${localUnit || unit})`)) /**括号中添加单位 */ : (styleValue += localUnit || unit)
     }
 
     allStyle += `.${className} { ${preStyle ? preStyle : ""}${styleName}: ${styleValue}; }\n`

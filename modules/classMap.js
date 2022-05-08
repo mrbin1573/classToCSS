@@ -13,9 +13,10 @@
  *    placeholder snippets：enter后聚焦的提示内容
  *    accept 校验
  */
-const NUMBER_REG = /^\d+$/ // 数字
+const NUMBER_REG = /^\d+(\.{1}\d+)?$/ // 数字
 const HUNDRED_REG = /^[1-9]{1}0{2}$/ // 100~900
 const STRING_REG = /\D+/ // 非数字的字符串
+const FULL_REG = /^full$/ // full可设置100%
 const classMap = new Map([
   ["m", { styleName: "margin", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
   ["mt", { styleName: "margin-top", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
@@ -23,8 +24,8 @@ const classMap = new Map([
   ["mb", { styleName: "margin-bottom", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
   ["ml", { styleName: "margin-left", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
 
-  ["w", { styleName: "width", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
-  ["h", { styleName: "height", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
+  ["w", { styleName: "width", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG, FULL_REG] }],
+  ["h", { styleName: "height", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG, FULL_REG] }],
 
   ["p", { styleName: "padding", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
   ["pt", { styleName: "padding-top", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
@@ -32,10 +33,10 @@ const classMap = new Map([
   ["pb", { styleName: "padding-bottom", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
   ["pl", { styleName: "padding-left", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
 
-  ["top", { styleName: "top", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
-  ["right", { styleName: "right", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
-  ["bottom", { styleName: "bottom", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
-  ["left", { styleName: "left", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
+  ["top", { styleName: "top", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG, FULL_REG] }],
+  ["right", { styleName: "right", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG, FULL_REG] }],
+  ["bottom", { styleName: "bottom", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG, FULL_REG] }],
+  ["left", { styleName: "left", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG, FULL_REG] }],
 
   ["static", { styleName: "position", valType: "className", placeholder: "", accept: [STRING_REG] }],
   ["relative", { styleName: "position", valType: "className", placeholder: "", accept: [STRING_REG] }],
@@ -66,7 +67,15 @@ const classMap = new Map([
 
   [
     "radius",
-    { styleName: "border-radius", hasUnit: true, willRatio: true, preStyle: "overflow: hidden; ", valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] },
+    {
+      styleName: "border-radius",
+      hasUnit: true,
+      willRatio: true,
+      preStyle: "overflow: hidden; ",
+      valType: "classNameValue",
+      placeholder: "number",
+      accept: [NUMBER_REG, FULL_REG],
+    },
   ],
 
   ["fs", { styleName: "font-size", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
@@ -76,11 +85,11 @@ const classMap = new Map([
 
   ["bgcolor", { styleName: "background-color", valType: "classNameValue", placeholder: "string", accept: [STRING_REG] }],
 
-  ["opacity", { styleName: "opacity", valType: "percent", placeholder: "0~100", accept: [NUMBER_REG] }],
-  ["transition", { styleName: "transition", valType: "classNameValue", hasUnit: true, unit: "ms", placeholder: "ms", accept: [NUMBER_REG] }],
+  ["opacity", { styleName: "opacity", valType: "percent", placeholder: "0~100", accept: [NUMBER_REG, FULL_REG] }],
+  ["transition", { styleName: "transition", valType: "classNameValue", hasUnit: true, unit: "ms", placeholder: "ms", accept: [NUMBER_REG, FULL_REG] }],
 
   ["rotate", { styleName: "transform", valType: "classBracketValue", hasUnit: true, unit: "deg", placeholder: "deg", accept: [NUMBER_REG] }],
-  ["translateX", { styleName: "transform", valType: "classBracketValue", hasUnit: true, placeholder: "number", accept: [NUMBER_REG] }],
+  ["translateX", { styleName: "transform", valType: "classBracketValue", hasUnit: true, placeholder: "number", accept: [NUMBER_REG, FULL_REG] }],
   ["scale", { styleName: "transform", valType: "classBracketValue", placeholder: "number", accept: [NUMBER_REG] }],
 
   ["border-box", { styleName: "box-sizing", valType: "className", placeholder: "", accept: [STRING_REG] }],

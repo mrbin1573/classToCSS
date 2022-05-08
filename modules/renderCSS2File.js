@@ -20,6 +20,8 @@ const renderCSS2File = async (renderLast = false) => {
 
   classAry = [...new Set([...lastClsssNamAry, ...classAry])]
 
+  classAry.sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0))
+
   const styles = getStyle(classAry)
 
   // 写入当前文件
