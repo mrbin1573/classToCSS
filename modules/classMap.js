@@ -25,7 +25,10 @@ const classMap = new Map([
   ["ml", { styleName: "margin-left", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
 
   ["w", { styleName: "width", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG, FULL_REG] }],
+  ["minw", { styleName: "min-width", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG, FULL_REG] }],
+  ["maxinw", { styleName: "max-width", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG, FULL_REG] }],
   ["h", { styleName: "height", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG, FULL_REG] }],
+  ["maxh", { styleName: "max-height", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG, FULL_REG] }],
 
   ["p", { styleName: "padding", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
   ["pt", { styleName: "padding-top", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
@@ -37,6 +40,10 @@ const classMap = new Map([
   ["right", { styleName: "right", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG, FULL_REG] }],
   ["bottom", { styleName: "bottom", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG, FULL_REG] }],
   ["left", { styleName: "left", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG, FULL_REG] }],
+
+  ["border", { styleName: "border-width", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
+  ["border", { styleName: "border-style", valType: "classNameValue", placeholder: "string", accept: [STRING_REG] }],
+  ["border-color", { styleName: "border-color", valType: "classNameValue", placeholder: "string", accept: [STRING_REG] }],
 
   ["static", { styleName: "position", valType: "className", placeholder: "", accept: [STRING_REG] }],
   ["relative", { styleName: "position", valType: "className", placeholder: "", accept: [STRING_REG] }],
@@ -81,7 +88,26 @@ const classMap = new Map([
   ["fs", { styleName: "font-size", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
   ["fw", { styleName: "font-weight", valType: "classNameValue", placeholder: "number|string", accept: [HUNDRED_REG, STRING_REG] }],
   ["fm", { styleName: "font-family", valType: "classNameValue", placeholder: "string", accept: [STRING_REG] }],
+  ["italic", { styleName: "font-style", valType: "className", placeholder: "string", accept: [STRING_REG] }],
   ["color", { styleName: "color", valType: "classNameValue", placeholder: "string", accept: [STRING_REG] }],
+  ["letter-spacing", { styleName: "letter-spacing", valType: "classNameValue", hasUnit: true, willRatio: true, placeholder: "number", accept: [NUMBER_REG] }],
+  ["line-height", { styleName: "line-height", valType: "classNameValue", hasUnit: true, willRatio: true, placeholder: "number", accept: [NUMBER_REG] }],
+
+  ["text", { styleName: "text-align", valType: "classNameValue", placeholder: "string", accept: [STRING_REG] }],
+  ["underline", { styleName: "text-decoration", valType: "className", placeholder: "", accept: [STRING_REG] }],
+  ["line-through", { styleName: "text-decoration", valType: "className", placeholder: "", accept: [STRING_REG] }],
+  ["no-underline", { styleName: "text-decoration", valType: "className", placeholder: "", accept: [STRING_REG] }],
+  ["uppercase", { styleName: "text-transform", valType: "className", placeholder: "", accept: [STRING_REG] }],
+  ["lowercase", { styleName: "text-transform", valType: "className", placeholder: "", accept: [STRING_REG] }],
+  ["capitalize", { styleName: "text-transform", valType: "className", placeholder: "", accept: [STRING_REG] }],
+  ["normal-case", { styleName: "text-transform", valType: "className", placeholder: "", accept: [STRING_REG] }],
+  ["truncate", { preStyle: "overflow: hidden; text-overflow: ellipsis; white-space: nowrap; ", placeholder: "", accept: [STRING_REG] }],
+  ["overflow-ellipsis", { styleName: "text-overflow", valType: "classNameValue", placeholder: "string", accept: [STRING_REG] }],
+  ["overflow-clip", { styleName: "text-overflow", valType: "classNameValue", placeholder: "string", accept: [STRING_REG] }],
+
+  ["list", { styleName: "list-style-type", valType: "classNameValue", placeholder: "string", accept: [STRING_REG] }],
+
+  ["whitespace", { styleName: "white-space", valType: "classNameValue", placeholder: "string", accept: [STRING_REG] }],
 
   ["bgcolor", { styleName: "background-color", valType: "classNameValue", placeholder: "string", accept: [STRING_REG] }],
 

@@ -10,6 +10,7 @@ const { isNumberStr } = require("./utils")
 const getStyle = (classAry) => {
   const { unit, valueRatio } = workspace.getConfiguration("classtocss")
   return classAry.reduce((allStyle, className) => {
+    // /(\w+(-\w+)*)(-(\w+))?$/.exec('border-solid') // TODO 重新解析class
     const params = /(\w+)\-?(.*)/gi.exec(className)
     if (!params) return allStyle
     /**
@@ -28,6 +29,9 @@ const getStyle = (classAry) => {
     const isCName = valType === "className"
     const isBracket = valType === "classBracketValue"
     const isFull = classValue === "full"
+
+    if (!styleName) return (allStyle += `.${className} { ${preStyle ? preStyle : ""}}\n`)
+
     valueMapper && (classValue = valueMapper[classValue] || classValue) // 值需要再次转换
 
     let styleValue = (isCNValue && classValue) || (isCPercent && +classValue) || (isCName && className) || (isBracket && `${classValue}`)
