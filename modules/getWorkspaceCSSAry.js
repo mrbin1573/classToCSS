@@ -19,10 +19,10 @@ function getWorkspaceCSSAry() {
 
   if (!text) return []
 
-  const classReg = /class=['|"]([\w+\d\-*\s\#\.\%]+)['|"]?/gim
+  const classReg = /class=(['|"])(.+)\1/gim // \1 表示第一个组匹配内容，不会出现匹配到'xxx"
   let classStr = []
-  text.replace(classReg, ($0, $1) => {
-    classStr.push($1)
+  text.replace(classReg, ($0, $1, $2) => {
+    classStr.push($2)
   })
 
   let classAry = classStr.map((str) => str.split(/\s+/g)).flat()
