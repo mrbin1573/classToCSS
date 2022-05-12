@@ -41,8 +41,8 @@ const classMap = new Map([
   ["bottom", { styleName: "bottom", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG, FULL_REG] }],
   ["left", { styleName: "left", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG, FULL_REG] }],
 
-  ["border", { styleName: "border-width", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
-  ["border", { styleName: "border-style", valType: "classNameValue", placeholder: "string", accept: [STRING_REG] }],
+  ["border-width", { styleName: "border-width", hasUnit: true, willRatio: true, valType: "classNameValue", placeholder: "number", accept: [NUMBER_REG] }],
+  ["border-style", { styleName: "border-style", valType: "classNameValue", placeholder: "string", accept: [STRING_REG] }],
   ["border-color", { styleName: "border-color", valType: "classNameValue", placeholder: "string", accept: [STRING_REG] }],
 
   ["static", { styleName: "position", valType: "className", placeholder: "", accept: [STRING_REG] }],
