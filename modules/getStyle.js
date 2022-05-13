@@ -10,45 +10,53 @@ const { isNumberStr } = require("./utils")
 const getStyle = (classAry) => {
   const { unit, valueRatio } = workspace.getConfiguration("classtocss")
   return classAry.reduce((allStyle, className) => {
-    // /(\w+(-\w+)*)(-(\w+))?$/.exec('border-solid') // TODO 重新解析class
-    const params = /(\w+)\-?(.*)/gi.exec(className)
-    if (!params) return allStyle
-    /**
-     * className全名匹配
-     * 若无再匹配classKey
-     * 若都无，则不合规则
-     */
-    let [, classKey, classValue] = params
+    const isMinus = className.lastIndexOf("--") > -1
+    const spliteIndex = isMinus ? className.lastIndexOf("--") : className.lastIndexOf("-")
+
+    let classValue, classKey
+    if (spliteIndex > -1) classValue = className.slice(spliteIndex + 1)
+    classKey = className.slice(0, spliteIndex)
+
+    // 优先匹配全名
     let mapInfo = classMap.get(className)
     if (!mapInfo) mapInfo = classMap.get(classKey)
     if (!mapInfo) return allStyle
 
-    const { styleName, preStyle, hasUnit, valType, valueMapper, willRatio, unit: localUnit, accept: acceptRegAry } = mapInfo
-    const isCNValue = valType === "classNameValue"
-    const isCPercent = valType === "percent"
-    const isCName = valType === "className"
-    const isBracket = valType === "classBracketValue"
-    const isFull = classValue === "full"
+    const { styleName, preStyle, hasUnit, valType, valueWrapper, willRatio, unit: localUnit, accept: acceptRegAry } = mapInfo
+    const isCValue = valType === "classValue"
+    const isPercent = valType === "percent"
+    const isCName = valType === "classFullName"
+    const isBracket = valType === "bracket"
+    const isFull = valType === "full"
 
-    if (!styleName) return (allStyle += `.${className} { ${preStyle ? preStyle : ""}}\n`)
+    if (isCValue && !classValue) return allStyle // isCValue classValue-没有值
+    if (!styleName) return (allStyle += `.${className} { ${preStyle ? preStyle : ""}}\n`) // styleName没配置，但是有前置style, 如truncate
 
-    valueMapper && (classValue = valueMapper[classValue] || classValue) // 值需要再次转换
+    // xx-[xx]自定义值，直接编译
+    const customReg = /^\[(.+)\]$/gim
+    const isCustomValue = customReg.test(classValue)
+    if (isCustomValue) {
+      customReg.lastIndex = 0
+      const _cusVal = customReg.exec(classValue)
+      className = className.replace("[", "\\[").replace("]", "\\]").replace("%", "\\%").replace(".", "\\.").replace("(", "\\(").replace(")", "\\)")
+      allStyle += `.${className} { ${preStyle ? preStyle : ""}${styleName}: ${_cusVal[1]}; }\n`
+      return allStyle
+    }
 
-    let styleValue = (isCNValue && classValue) || (isCPercent && +classValue) || (isCName && className) || (isBracket && `${classValue}`)
-
-    // 校验
-    if (acceptRegAry.every((reg) => !reg.test(styleValue))) return allStyle
-
-    // 通过校验再处理值
+    let styleValue = ((isCValue || isPercent || isBracket) && classValue) || (isCName && className)
+    if (acceptRegAry.every((reg) => !reg.test(styleValue))) return allStyle // 校验
+    valueWrapper && (styleValue = valueWrapper[classValue] || classValue) // 值需要再次转换
     willRatio && isNumberStr(styleValue) && (styleValue *= valueRatio)
-    isCPercent && (styleValue = styleValue / 100)
+    isPercent && (styleValue = styleValue / 100)
     isFull && (styleValue = "100%")
     isBracket && (styleValue = `${classKey}(${classValue})`)
 
-    if (hasUnit && !isFull) {
+    if (hasUnit) {
       isBracket ? (styleValue = styleValue.replace(")", `${localUnit || unit})`)) /**括号中添加单位 */ : (styleValue += localUnit || unit)
     }
 
+    if (/#/.test(className)) className = className.replace(/#/, "\\#") // 类似 color-#dedede => .color-\#dedede { xxx }
+    // if (/%/.test(className)) className = className.replace(/%/, "\\%") // 类似 w-50% => .w-50\% { xxx }
     allStyle += `.${className} { ${preStyle ? preStyle : ""}${styleName}: ${styleValue}; }\n`
 
     return allStyle
