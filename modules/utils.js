@@ -77,6 +77,18 @@ const autoLinkCSSFile = () => {
  */
 const isNumberStr = (string) => !Number.isNaN(Number(string))
 
+/**
+ * @description: 包含特殊符号className的转换
+ * @param {String} className
+ * @return {String} className 如color-#fff => color-\#fff
+ */
+const toSpecialClassName = (className) => {
+  const isSpecial = /#/.test(className)
+  if (isSpecial) className = className.replace(/#/, "\\#")
+
+  return className
+}
+
 module.exports = {
   stringToUint8Array,
   uint8ArrayToString,
@@ -84,4 +96,5 @@ module.exports = {
   writeStringToPath,
   isNumberStr,
   autoLinkCSSFile,
+  toSpecialClassName,
 }

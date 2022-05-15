@@ -1,14 +1,12 @@
 const { window } = require("vscode")
-const classMap = require("./classMap")
 
-// 检测的文件类型
 const workspaceCSSCatch = new Map() // 所有文件的css缓存
 
 /**
  * @description: 获取工作区的class数组
  * @return {Array} 去重的class数组
  */
-function getWorkspaceCSSAry() {
+function getWorkspaceClassAry() {
   const editor = window.activeTextEditor
 
   if (!editor) return []
@@ -37,4 +35,4 @@ function getWorkspaceCSSAry() {
   return [...resSet]
 }
 
-module.exports = getWorkspaceCSSAry
+module.exports = getWorkspaceClassAry
