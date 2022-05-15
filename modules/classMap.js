@@ -255,7 +255,7 @@ const generateSnippetsJSON = () => {
     }
   })
 
-  // console.log("snippets.json=====>", JSON.stringify(jsonObj))
+  console.log("snippets.json=====>", JSON.stringify(jsonObj))
 }
 generateSnippetsJSON() // 需要生成提示时，执行一下，在【调试控制台】查看结果
 
