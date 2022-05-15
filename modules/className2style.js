@@ -37,7 +37,6 @@ module.exports = function (className) {
   if (isCustomValue) {
     customReg.lastIndex = 0
     const _cusVal = customReg.exec(classValue)
-    className = className.replace("[", "\\[").replace("]", "\\]").replace("%", "\\%").replace(".", "\\.").replace("(", "\\(").replace(")", "\\)")
     return `${preStyle ? preStyle : ""}${styleName}: ${_cusVal[1]};`
   }
 

@@ -1,5 +1,5 @@
 const className2style = require("./className2style")
-const { toSpecialClassName } = require("./utils")
+const { toSpecialStr } = require("./utils")
 
 /**
  * @description: 生成style样式
@@ -9,7 +9,7 @@ const { toSpecialClassName } = require("./utils")
 const getSimpleStyle = (classAry) => {
   return classAry.reduce((allStyle, className) => {
     const style = className2style(className)
-    allStyle += !!style ? `.${toSpecialClassName(className)} { ${style} }\n` : ""
+    allStyle += !!style ? `.${toSpecialStr(className)} { ${style} }\n` : ""
 
     return allStyle
   }, "")

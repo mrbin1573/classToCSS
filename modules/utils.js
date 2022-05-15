@@ -79,14 +79,28 @@ const isNumberStr = (string) => !Number.isNaN(Number(string))
 
 /**
  * @description: 包含特殊符号className的转换
- * @param {String} className
+ * @param {String} string
  * @return {String} className 如color-#fff => color-\#fff
  */
-const toSpecialClassName = (className) => {
-  const isSpecial = /#/.test(className)
-  if (isSpecial) className = className.replace(/#/, "\\#")
+const toSpecialStr = (string) => {
+  const specialReg = /([\[\]\%\.\(\)\#])/
 
-  return className
+  const isSpecailStr = specialReg.test(string)
+  if (!isSpecailStr) return string
+
+  const stringAry = string.split("")
+  const result = stringAry.reduce((acc, cur) => {
+    const _isSpecial = specialReg.test(cur)
+    _isSpecial
+      ? cur.replace(specialReg, ($0, $1) => {
+          acc += cur.replace($1, `\\${$1}`)
+        })
+      : (acc += cur)
+
+    return acc
+  }, "")
+
+  return result
 }
 
 module.exports = {
@@ -96,5 +110,5 @@ module.exports = {
   writeStringToPath,
   isNumberStr,
   autoLinkCSSFile,
-  toSpecialClassName,
+  toSpecialStr,
 }
