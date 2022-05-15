@@ -41,16 +41,32 @@ module.exports = function (className) {
   }
 
   let styleValue = ((isCValue || isPercent || isBracket) && classValue) || (isCName && className)
-  if (acceptRegAry.every((reg) => !reg.test(styleValue))) return "" // 校验
-  valueWrapper && (styleValue = valueWrapper[classValue] || classValue) // 值需要再次转换
-  willRatio && isNumberStr(styleValue) && (styleValue *= valueRatio)
-  isPercent && (styleValue = styleValue / 100)
-  isFull && (styleValue = "100%")
-  isBracket && (styleValue = `${classKey}(${classValue})`)
+  const isMultiVal = /\_/.test(styleValue)
+  if (isMultiVal) {
+    let values = classValue.split("_")
+    values = values.map((value) => {
+      const isNum = isNumberStr(value)
+      if (!isNum) return value
 
-  if (hasUnit) {
-    isBracket ? (styleValue = styleValue.replace(")", `${localUnit || unit})`)) /**括号中添加单位 */ : (styleValue += localUnit || unit)
+      valueRatio && (value *= valueRatio)
+      hasUnit && (value += `${localUnit || unit}`)
+
+      return value
+    })
+
+    return `${preStyle ? preStyle : ""}${styleName}: ${values.join(" ")};`
+  } else {
+    if (acceptRegAry.every((reg) => !reg.test(styleValue))) return "" // 校验
+    valueWrapper && (styleValue = valueWrapper[classValue] || classValue) // 值需要再次转换
+    willRatio && isNumberStr(styleValue) && (styleValue *= valueRatio)
+    isPercent && (styleValue = styleValue / 100)
+    isFull && (styleValue = "100%")
+    isBracket && (styleValue = `${classKey}(${classValue})`)
+
+    if (hasUnit) {
+      isBracket ? (styleValue = styleValue.replace(")", `${localUnit || unit})`)) /**括号中添加单位 */ : (styleValue += localUnit || unit)
+    }
+
+    return `${preStyle ? preStyle : ""}${styleName}: ${styleValue};`
   }
-
-  return `${preStyle ? preStyle : ""}${styleName}: ${styleValue};`
 }

@@ -212,7 +212,8 @@ const classMap = new Map([
   // 边框不透明度、分割线、轮廓环未实现
   // 边框样式
   ["border-style", { styleName: "border-style", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
-  // shadow 未实现
+  // shadow _实现多值
+  ["shadow", { styleName: "box-shadow", hasUnit: true, willRatio: true, valType: "classValue", placeholder: "x_x_x_x_#xxx", accept: [STRING_REG] }],
   // 不透明度
   ["opacity", { styleName: "opacity", valType: "percent", placeholder: "0~100", accept: [NUMBER_REG] }],
   // mix-blend

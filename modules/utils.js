@@ -83,7 +83,7 @@ const isNumberStr = (string) => !Number.isNaN(Number(string))
  * @return {String} className 如color-#fff => color-\#fff
  */
 const toSpecialStr = (string) => {
-  const specialReg = /([\[\]\%\.\(\)\#])/
+  const specialReg = /([\[\]\%\.\(\)\#\s])/
 
   const isSpecailStr = specialReg.test(string)
   if (!isSpecailStr) return string
