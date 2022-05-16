@@ -5,12 +5,13 @@ const { isNumberStr } = require("./utils")
 /**
  * @description: className转换为style
  * @param className
- * @return {String} style
+ * @return {Object} {style: '', isolateStyle: '独立的不包裹在className中的style'}
  */
 module.exports = function (className) {
   const { unit, valueRatio } = workspace.getConfiguration("classtocss")
   const isMinus = className.lastIndexOf("--") > -1
   const spliteIndex = isMinus ? className.lastIndexOf("--") : className.lastIndexOf("-")
+  const resInfo = { style: "", isolateStyle: "" }
 
   let classValue, classKey
   if (spliteIndex > -1) classValue = className.slice(spliteIndex + 1)
@@ -19,17 +20,23 @@ module.exports = function (className) {
   // 优先匹配全名
   let mapInfo = classMap.get(className)
   if (!mapInfo) mapInfo = classMap.get(classKey)
-  if (!mapInfo) return ""
+  if (!mapInfo) return resInfo
 
-  const { styleName, preStyle, hasUnit, valType, valueWrapper, willRatio, unit: localUnit, accept: acceptRegAry } = mapInfo
+  const { styleName, preStyle, hasUnit, valType, valueWrapper, willRatio, unit: localUnit, accept: acceptRegAry, isolateStyle } = mapInfo
+  resInfo.isolateStyle = isolateStyle
+
   const isCValue = valType === "classValue"
   const isPercent = valType === "percent"
   const isCName = valType === "classFullName"
   const isBracket = valType === "bracket"
-  const isFull = valType === "full"
+  const isFull = classValue === "full"
 
-  if (isCValue && !classValue) return "" // isCValue classValue-没有值
-  if (!styleName) return `${preStyle ? preStyle : ""}` // styleName没配置，但是有前置style, 如truncate
+  if (isCValue && !classValue) return resInfo // isCValue classValue-没有值
+  if (!styleName) {
+    resInfo.style = `${preStyle ? preStyle : ""}`
+    return resInfo
+  }
+  // styleName没配置，但是有前置style, 如truncate
 
   // xx-[xx]自定义值，直接编译
   const customReg = /^\[(.+)\]$/gim
@@ -37,7 +44,9 @@ module.exports = function (className) {
   if (isCustomValue) {
     customReg.lastIndex = 0
     const _cusVal = customReg.exec(classValue)
-    return `${preStyle ? preStyle : ""}${styleName}: ${_cusVal[1]};`
+    resInfo.style = `${preStyle ? preStyle : ""}${styleName}: ${_cusVal[1]};`
+
+    return resInfo
   }
 
   let styleValue = ((isCValue || isPercent || isBracket) && classValue) || (isCName && className)
@@ -45,28 +54,30 @@ module.exports = function (className) {
   if (isMultiVal) {
     let values = classValue.split("_")
     values = values.map((value) => {
-      const isNum = isNumberStr(value)
-      if (!isNum) return value
-
-      valueRatio && (value *= valueRatio)
-      hasUnit && (value += `${localUnit || unit}`)
-
+      if (isNumberStr(value)) {
+        valueRatio && (value *= valueRatio)
+        hasUnit && (value += `${localUnit || unit}`)
+      }
       return value
     })
 
-    return `${preStyle ? preStyle : ""}${styleName}: ${values.join(" ")};`
+    resInfo.style = `${preStyle ? preStyle : ""}${styleName}: ${values.join(" ")};`
+
+    return resInfo
   } else {
-    if (acceptRegAry.every((reg) => !reg.test(styleValue))) return "" // 校验
+    if (acceptRegAry.every((reg) => !reg.test(styleValue))) return resInfo // 校验
     valueWrapper && (styleValue = valueWrapper[classValue] || classValue) // 值需要再次转换
     willRatio && isNumberStr(styleValue) && (styleValue *= valueRatio)
     isPercent && (styleValue = styleValue / 100)
     isFull && (styleValue = "100%")
     isBracket && (styleValue = `${classKey}(${classValue})`)
 
-    if (hasUnit) {
+    if (hasUnit && !isFull) {
       isBracket ? (styleValue = styleValue.replace(")", `${localUnit || unit})`)) /**括号中添加单位 */ : (styleValue += localUnit || unit)
     }
 
-    return `${preStyle ? preStyle : ""}${styleName}: ${styleValue};`
+    resInfo.style = `${preStyle ? preStyle : ""}${styleName}: ${styleValue};`
+
+    return resInfo
   }
 }

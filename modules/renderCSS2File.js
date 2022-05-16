@@ -31,8 +31,10 @@ const renderCSS2File = async () => {
    * apply class
    */
   const applyClassList = await getApplyClass()
-  const applyStyles = getApplyStyle(applyClassList)
-  totalStyle += applyStyles
+  if (applyClassList.length) {
+    const applyStyles = getApplyStyle(applyClassList)
+    totalStyle += applyStyles
+  }
 
   !!totalStyle && writeStringToPath(totalStyle, vscode.workspace.workspaceFolders[0].uri.fsPath + "\\" + generateCSSFileName)
 }

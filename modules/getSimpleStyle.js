@@ -8,10 +8,11 @@ const { toSpecialStr } = require("./utils")
  */
 const getSimpleStyle = (classAry) => {
   return classAry.reduce((allStyle, className) => {
-    const style = className2style(className)
-    allStyle += !!style ? `.${toSpecialStr(className)} { ${style} }\n` : ""
+    const { style, isolateStyle } = className2style(className)
 
-    return allStyle
+    if (isolateStyle) allStyle += isolateStyle + "\n"
+
+    return (allStyle += !!style ? `.${toSpecialStr(className)} { ${style} } \n` : "")
   }, "")
 }
 

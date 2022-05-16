@@ -1,12 +1,15 @@
 /**
  * [name: xx, {xxxxx}]
- *    - name snippets：触发关键词
- *      styleName 生成的style
- *        valType
+ * name snippets：触发关键词
+ *    styleName 生成的style
+ *       valType
  *          - classValue     class="xx-value"
  *          - percent   value/100
  *          - classFullName class="xxx"
  *          - bracket class="key-value" => key(value) 如rotate-60 => rotate(60deg)
+ *    preStyle 当前class前置补充的样式，如自动补充dispaly:flex
+ *    isolateStyle 独立前置补充的样式，会单独生成style
+ *    fullStyle 直接转化成的全部style
  *    valueWrapper 如有，则取值的按此匹配
  *    willRatio valueRatio生效的项
  *    hasUnit 是否有单位后缀，对应config.unit
@@ -232,9 +235,26 @@ const classMap = new Map([
   // 表格边框
   ["border-collapse", { styleName: "border-collapse", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
   ["border-separate", { styleName: "border-collapse", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
-  //////////////////////做到此处，待续//////////
-
+  // 表格布局
+  ["table-auto", { styleName: "table-layout", valType: "classValue", placeholder: "", accept: [STRING_REG] }],
+  ["table-fixed", { styleName: "table-layout", valType: "classValue", placeholder: "", accept: [STRING_REG] }],
+  // 下划线传值,TODO下划线杂糅中划线
   ["transition", { styleName: "transition", valType: "classValue", hasUnit: true, unit: "ms", placeholder: "ms", accept: [NUMBER_REG, FULL_REG] }],
+  ["ease", { styleName: "transition-timing-function", valType: "classValue", accept: [STRING_REG] }],
+  ["delay", { styleName: "transition-delay", valType: "classValue", hasUnit: true, unit: "ms", placeholder: "ms", accept: [NUMBER_REG, FULL_REG] }],
+  // 动画animate
+  ["animate-none", { preStyle: "animation: none; ", placeholder: "" }],
+  [
+    "animate-spin",
+    {
+      preStyle: "animation: spin 1s linear infinite;",
+      isolateStyle: `@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}`,
+      placeholder: "",
+    },
+  ],
 
   ["rotate", { styleName: "transform", valType: "bracket", hasUnit: true, unit: "deg", placeholder: "deg", accept: [NUMBER_REG, MINUS_NUMBER_REG] }],
   ["translateX", { styleName: "transform", valType: "bracket", hasUnit: true, placeholder: "number", accept: [NUMBER_REG, MINUS_NUMBER_REG, FULL_REG] }],
@@ -257,6 +277,6 @@ const generateSnippetsJSON = () => {
 
   console.log("snippets.json=====>", JSON.stringify(jsonObj))
 }
-generateSnippetsJSON() // 需要生成提示时，执行一下，在【调试控制台】查看结果
+// generateSnippetsJSON() // 需要生成提示时，执行一下，在【调试控制台】查看结果
 
 module.exports = classMap
