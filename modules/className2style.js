@@ -61,7 +61,9 @@ module.exports = function (className) {
       return value
     })
 
-    resInfo.style = `${preStyle ? preStyle : ""}${styleName}: ${values.join(" ")};`
+    let _value = isBracket ? `${classKey}(${values.join(", ")})` : values.join(" ")
+
+    resInfo.style = `${preStyle ? preStyle : ""}${styleName}: ${_value};`
 
     return resInfo
   } else {
