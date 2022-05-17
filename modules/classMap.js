@@ -95,8 +95,7 @@ const classMap = new Map([
   ["flex-shrink", { preStyle: "flex-shrink: 1; ", placeholder: "" }], // tailwindcss差异
   // Order
   ["order", { styleName: "order", valType: "classValue", placeholder: "number", accept: [NUMBER_REG] }], // tailwindcss差异
-  // Grid未实现
-  // Gap未实现
+  // Grid未实现 Gap未实现
   // Justify Content
   ["justify", { styleName: "justify-content", preStyle: "display: flex; ", valType: "classValue", valueWrapper: { start: "flex-start", end: "flex-end", between: "space-between", around: "space-around", evenly: "space-evenly" }, placeholder: "|", accept: [STRING_REG] }],
   // Justify Items
@@ -255,12 +254,89 @@ const classMap = new Map([
       placeholder: "",
     },
   ],
-
+  [
+    "animate-ping",
+    {
+      preStyle: "animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;",
+      isolateStyle: `@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}`,
+      placeholder: "",
+    },
+  ],
+  [
+    "animate-pulse",
+    {
+      preStyle: "animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;",
+      isolateStyle: `@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}`,
+      placeholder: "",
+    },
+  ],
+  [
+    "animate-bounce",
+    {
+      preStyle: "animation: bounce 1s infinite;",
+      isolateStyle: `@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}`,
+      placeholder: "",
+    },
+  ],
+  // 变换原点 下划线双值
+  ["origin", { styleName: "transform-origin", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
+  // 缩放 比tailwindcss全
+  ["scale", { styleName: "transform", valType: "bracket", placeholder: "number", accept: [NUMBER_REG] }],
+  ["scaleX", { styleName: "transform", valType: "bracket", placeholder: "number", accept: [NUMBER_REG] }],
+  ["scaleY", { styleName: "transform", valType: "bracket", placeholder: "number", accept: [NUMBER_REG] }],
+  ["scaleZ", { styleName: "transform", valType: "bracket", placeholder: "number", accept: [NUMBER_REG] }],
+  // 旋转 比tailwindcss全
   ["rotate", { styleName: "transform", valType: "bracket", hasUnit: true, unit: "deg", placeholder: "deg", accept: [NUMBER_REG, MINUS_NUMBER_REG] }],
+  ["rotateX", { styleName: "transform", valType: "bracket", hasUnit: true, unit: "deg", placeholder: "deg", accept: [NUMBER_REG, MINUS_NUMBER_REG] }],
+  ["rotateY", { styleName: "transform", valType: "bracket", hasUnit: true, unit: "deg", placeholder: "deg", accept: [NUMBER_REG, MINUS_NUMBER_REG] }],
+  ["rotateZ", { styleName: "transform", valType: "bracket", hasUnit: true, unit: "deg", placeholder: "deg", accept: [NUMBER_REG, MINUS_NUMBER_REG] }],
+  ["rotate3d", { styleName: "transform", valType: "bracket", hasUnit: true, unit: "deg", placeholder: "deg", accept: [NUMBER_REG, MINUS_NUMBER_REG] }],
+  // 平移 比tailwindcss全
+  ["translate", { styleName: "transform", valType: "bracket", hasUnit: true, placeholder: "number", accept: [NUMBER_REG, MINUS_NUMBER_REG, FULL_REG] }],
   ["translateX", { styleName: "transform", valType: "bracket", hasUnit: true, placeholder: "number", accept: [NUMBER_REG, MINUS_NUMBER_REG, FULL_REG] }],
   ["translateY", { styleName: "transform", valType: "bracket", hasUnit: true, placeholder: "number", accept: [NUMBER_REG, MINUS_NUMBER_REG, FULL_REG] }],
   ["translateZ", { styleName: "transform", valType: "bracket", hasUnit: true, placeholder: "number", accept: [NUMBER_REG, MINUS_NUMBER_REG, FULL_REG] }],
-  ["scale", { styleName: "transform", valType: "bracket", placeholder: "number", accept: [NUMBER_REG] }],
+  ["translate3d", { styleName: "transform", valType: "bracket", hasUnit: true, placeholder: "number", accept: [NUMBER_REG, MINUS_NUMBER_REG, FULL_REG] }],
+  // 倾斜
+  ["skew", { styleName: "transform", valType: "bracket", hasUnit: true, placeholder: "number", accept: [NUMBER_REG, MINUS_NUMBER_REG, FULL_REG] }],
+  ["skewX", { styleName: "transform", valType: "bracket", hasUnit: true, placeholder: "number", accept: [NUMBER_REG, MINUS_NUMBER_REG, FULL_REG] }],
+  ["skewY", { styleName: "transform", valType: "bracket", hasUnit: true, placeholder: "number", accept: [NUMBER_REG, MINUS_NUMBER_REG, FULL_REG] }],
+  // 表单外观 未实现
+  // 光标效果
+  ["cursor", { styleName: "cursor", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
+  ["cursor-not-allowed", { preStyle: "cursor: not-allowed; ", placeholder: "" }],
+  // 轮廓
+  ["outline-none", { preStyle: "outline: 2px solid transparent; outline-offset: 2px; ", placeholder: "" }],
+  ["outline-white", { preStyle: "outline: 2px dotted white; outline-offset: 2px; ", placeholder: "" }],
+  ["outline-black", { preStyle: "outline: 2px dotted black; outline-offset: 2px; ", placeholder: "" }],
+  // 指向事件
+  ["pointer-events", { styleName: "pointer-events", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
+  // 大小调整 比tailwindcss不同
+  ["resize", { styleName: "resize", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
+  // 用户选择
+  ["select", { styleName: "user-select", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
+  // 屏幕阅读器、SVG未实现
 ])
 
 const generateSnippetsJSON = () => {
