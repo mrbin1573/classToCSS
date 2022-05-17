@@ -97,10 +97,10 @@
           "default": 1,
           "description": "数值的缩放比例(The scaling ratio of the value)。eg: top-20 => top: (20 * valueRatio) + unit"
         },
-        "classtocss.useApply": {
+        "classtocss.compress": {
           "type": "boolean",
-          "default": true,
-          "description": "组合class"
+          "default": false,
+          "description": "是否压缩输出结果(Whether to compress the output)"
         }
       }
     }

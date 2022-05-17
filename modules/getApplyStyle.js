@@ -11,8 +11,8 @@ const getApplyStyle = (classAry) => {
     const res = classList.reduce(
       (acc, curName) => {
         const { style, isolateStyle } = className2style(curName)
-        acc.style += style
-        acc.isolateStyle += isolateStyle
+        acc.style += style + " "
+        acc.isolateStyle += isolateStyle || ""
 
         return acc
       },

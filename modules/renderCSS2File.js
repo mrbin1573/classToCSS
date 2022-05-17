@@ -1,11 +1,11 @@
-const vscode = require("vscode")
 const getWorkspaceClassAry = require("./getWorkspaceClassAry.js")
 const getSimpleStyle = require("./getSimpleStyle.js")
 const { writeStringToPath } = require("./utils.js")
 const getLastClassAry = require("./getLastClassAry.js")
-const { generateCSSFileName } = require("./config.js")
+const { GOLBAL_FILE_NAME, GLOBAL_HEAD_DES } = require("./config.js")
 const getApplyClass = require("./getApplyClass.js")
 const getApplyStyle = require("./getApplyStyle.js")
+const { workspace } = require("vscode")
 let lastClsssNamAry = []
 
 /**
@@ -36,7 +36,13 @@ const renderCSS2File = async () => {
     totalStyle += applyStyles
   }
 
-  !!totalStyle && writeStringToPath(totalStyle, vscode.workspace.workspaceFolders[0].uri.fsPath + "\\" + generateCSSFileName)
+  if (!totalStyle) return
+
+  // 压缩
+  const { compress } = workspace.getConfiguration("classtocss")
+  compress && (totalStyle = totalStyle.replace(/[\n\r\s]+/gim, ""))
+
+  writeStringToPath(GLOBAL_HEAD_DES + totalStyle, workspace.workspaceFolders[0].uri.fsPath + "\\" + GOLBAL_FILE_NAME)
 }
 
 module.exports = renderCSS2File

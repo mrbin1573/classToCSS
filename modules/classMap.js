@@ -23,29 +23,29 @@ const STRING_REG = /\D+/ // 非数字的字符串
 const FULL_REG = /^full$/ // full可设置100%
 const classMap = new Map([
   // Box Sizing
-  ["border-box", { styleName: "box-sizing", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["content-box", { styleName: "box-sizing", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
+  ["border-box", { styleName: "box-sizing", valType: "classFullName", accept: [STRING_REG] }],
+  ["content-box", { styleName: "box-sizing", valType: "classFullName", accept: [STRING_REG] }],
   // Display
-  ["block", { styleName: "display", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["inline-block", { styleName: "display", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["inline", { styleName: "display", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["flex", { styleName: "display", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["inline-flex", { styleName: "display", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["table", { styleName: "display", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["inline-table", { styleName: "display", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["table-caption", { styleName: "display", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["table-cell", { styleName: "display", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["table-column", { styleName: "display", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["table-column-group", { styleName: "display", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["table-footer-group", { styleName: "display", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["table-header-group", { styleName: "display", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["table-row-group", { styleName: "display", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
+  ["block", { styleName: "display", valType: "classFullName", accept: [STRING_REG] }],
+  ["inline-block", { styleName: "display", valType: "classFullName", accept: [STRING_REG] }],
+  ["inline", { styleName: "display", valType: "classFullName", accept: [STRING_REG] }],
+  ["flex", { styleName: "display", valType: "classFullName", accept: [STRING_REG] }],
+  ["inline-flex", { styleName: "display", valType: "classFullName", accept: [STRING_REG] }],
+  ["table", { styleName: "display", valType: "classFullName", accept: [STRING_REG] }],
+  ["inline-table", { styleName: "display", valType: "classFullName", accept: [STRING_REG] }],
+  ["table-caption", { styleName: "display", valType: "classFullName", accept: [STRING_REG] }],
+  ["table-cell", { styleName: "display", valType: "classFullName", accept: [STRING_REG] }],
+  ["table-column", { styleName: "display", valType: "classFullName", accept: [STRING_REG] }],
+  ["table-column-group", { styleName: "display", valType: "classFullName", accept: [STRING_REG] }],
+  ["table-footer-group", { styleName: "display", valType: "classFullName", accept: [STRING_REG] }],
+  ["table-header-group", { styleName: "display", valType: "classFullName", accept: [STRING_REG] }],
+  ["table-row-group", { styleName: "display", valType: "classFullName", accept: [STRING_REG] }],
   // float
   ["float", { styleName: "float", valType: "classValue", placeholder: "left|center|right", accept: [STRING_REG] }],
   ["clear", { styleName: "clear", valType: "classValue", placeholder: "left|center|both|none", accept: [STRING_REG] }],
   // isolate
-  ["isolate", { styleName: "isolation", valType: "classValue", placeholder: "", accept: [STRING_REG] }],
-  ["isolation-auto", { styleName: "isolation", valType: "classValue", placeholder: "", accept: [STRING_REG] }],
+  ["isolate", { styleName: "isolation", valType: "classValue", accept: [STRING_REG] }],
+  ["isolation-auto", { styleName: "isolation", valType: "classValue", accept: [STRING_REG] }],
   // Object Fit
   ["object", { styleName: "object-fit", valType: "classValue", placeholder: "contain|cover|fill|none|scale-down", accept: [STRING_REG] }],
   // Object Position https://www.tailwindcss.cn/docs/object-position TODO
@@ -58,41 +58,41 @@ const classMap = new Map([
   ["overscroll-x", { styleName: "overscroll-x", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
   ["overscroll-y", { styleName: "overscroll-y", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
   // 定位
-  ["static", { styleName: "position", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["fixed", { styleName: "position", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["absolute", { styleName: "position", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["relative", { styleName: "position", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["sticky", { styleName: "position", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
+  ["static", { styleName: "position", valType: "classFullName", accept: [STRING_REG] }],
+  ["fixed", { styleName: "position", valType: "classFullName", accept: [STRING_REG] }],
+  ["absolute", { styleName: "position", valType: "classFullName", accept: [STRING_REG] }],
+  ["relative", { styleName: "position", valType: "classFullName", accept: [STRING_REG] }],
+  ["sticky", { styleName: "position", valType: "classFullName", accept: [STRING_REG] }],
   // Top / Right / Bottom / Left
   ["top", { styleName: "top", hasUnit: true, willRatio: true, valType: "classValue", placeholder: "number", accept: [NUMBER_REG, MINUS_NUMBER_REG, FULL_REG] }],
   ["right", { styleName: "right", hasUnit: true, willRatio: true, valType: "classValue", placeholder: "number", accept: [NUMBER_REG, MINUS_NUMBER_REG, FULL_REG] }],
   ["bottom", { styleName: "bottom", hasUnit: true, willRatio: true, valType: "classValue", placeholder: "number", accept: [NUMBER_REG, MINUS_NUMBER_REG, FULL_REG] }],
   ["left", { styleName: "left", hasUnit: true, willRatio: true, valType: "classValue", placeholder: "number", accept: [NUMBER_REG, MINUS_NUMBER_REG, FULL_REG] }],
   // 可见性
-  ["visible", { styleName: "visibility", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["invisible", { preStyle: "visibility: hidden; ", placeholder: "", accept: [STRING_REG] }],
+  ["visible", { styleName: "visibility", valType: "classFullName", accept: [STRING_REG] }],
+  ["invisible", { preStyle: "visibility: hidden; ", accept: [STRING_REG] }],
   // Z-Index
   ["z", { styleName: "z-index", valType: "classValue", placeholder: "number", accept: [NUMBER_REG] }],
   // Flex Direction
-  ["flex-row", { styleName: "flex-direction", preStyle: "display: flex; ", valType: "classValue", placeholder: "", accept: [STRING_REG] }],
-  ["flex-row-reverse", { styleName: "flex-direction", preStyle: "display: flex; ", valType: "classValue", valueWrapper: { reverse: "row-reverse" }, placeholder: "", accept: [STRING_REG] }],
-  ["flex-col", { styleName: "flex-direction", preStyle: "display: flex; ", valType: "classValue", valueWrapper: { col: "column" }, placeholder: "", accept: [STRING_REG] }],
-  ["flex-col-reverse", { styleName: "flex-direction", preStyle: "display: flex; ", valType: "classValue", valueWrapper: { "col-reserse": "column-reverse" }, placeholder: "", accept: [STRING_REG] }],
+  ["flex-row", { styleName: "flex-direction", preStyle: "display: flex; ", valType: "classValue", accept: [STRING_REG] }],
+  ["flex-row-reverse", { styleName: "flex-direction", preStyle: "display: flex; ", valType: "classValue", valueWrapper: { reverse: "row-reverse" }, accept: [STRING_REG] }],
+  ["flex-col", { styleName: "flex-direction", preStyle: "display: flex; ", valType: "classValue", valueWrapper: { col: "column" }, accept: [STRING_REG] }],
+  ["flex-col-reverse", { styleName: "flex-direction", preStyle: "display: flex; ", valType: "classValue", valueWrapper: { "col-reserse": "column-reverse" }, accept: [STRING_REG] }],
   // Flex Wrap
-  ["flex-wrap", { styleName: "flex-wrap", preStyle: "display: flex; ", valType: "classValue", placeholder: "", accept: [STRING_REG] }],
-  ["flex-wrap-reverse", { styleName: "flex-wrap", preStyle: "display: flex; ", valType: "classValue", placeholder: "", accept: [STRING_REG] }],
-  ["flex-nowrap", { styleName: "flex-wrap", preStyle: "display: flex; ", valType: "classValue", placeholder: "", accept: [STRING_REG] }],
+  ["flex-wrap", { styleName: "flex-wrap", preStyle: "display: flex; ", valType: "classValue", accept: [STRING_REG] }],
+  ["flex-wrap-reverse", { styleName: "flex-wrap", preStyle: "display: flex; ", valType: "classValue", accept: [STRING_REG] }],
+  ["flex-nowrap", { styleName: "flex-wrap", preStyle: "display: flex; ", valType: "classValue", accept: [STRING_REG] }],
   // Flex
-  ["flex-1", { preStyle: "flex: 1 1 0%; ", placeholder: "" }],
-  ["flex-auto", { preStyle: "flex: 1 1 auto; ", placeholder: "" }],
-  ["flex-initial", { preStyle: "flex: 0 1 auto; ", placeholder: "" }],
-  ["flex-none", { preStyle: "flex: none; ", placeholder: "" }],
+  ["flex-1", { preStyle: "flex: 1 1 0%; " }],
+  ["flex-auto", { preStyle: "flex: 1 1 auto; " }],
+  ["flex-initial", { preStyle: "flex: 0 1 auto; " }],
+  ["flex-none", { preStyle: "flex: none; " }],
   // Flex Grow
   ["flex-grow", { styleName: "flex-grow", valType: "classValue", placeholder: "0|1", accept: [NUMBER_REG] }], // tailwindcss差异
-  ["flex-grow", { preStyle: "flex-grow: 1; ", placeholder: "" }], // tailwindcss差异
+  ["flex-grow", { preStyle: "flex-grow: 1; " }], // tailwindcss差异
   // Flex Shrink
   ["flex-shrink", { styleName: "flex-shrink", valType: "classValue", placeholder: "0|1", accept: [NUMBER_REG] }], // tailwindcss差异
-  ["flex-shrink", { preStyle: "flex-shrink: 1; ", placeholder: "" }], // tailwindcss差异
+  ["flex-shrink", { preStyle: "flex-shrink: 1; " }], // tailwindcss差异
   // Order
   ["order", { styleName: "order", valType: "classValue", placeholder: "number", accept: [NUMBER_REG] }], // tailwindcss差异
   // Grid未实现 Gap未实现
@@ -140,7 +140,7 @@ const classMap = new Map([
   ["font-family", { styleName: "font-family", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
   // 字体样式
   ["italic", { styleName: "font-style", valType: "classFullName", placeholder: "string", accept: [STRING_REG] }],
-  ["not-italic", { preStyle: "font-style: normal; ", placeholder: "" }],
+  ["not-italic", { preStyle: "font-style: normal; " }],
   // 字体粗细 tailwindcss不一致
   ["font-weight", { styleName: "font-weight", valType: "classValue", placeholder: "number|string", accept: [HUNDRED_REG, STRING_REG] }],
   // Font Variant Numeric 未实现
@@ -150,23 +150,23 @@ const classMap = new Map([
   ["line-height", { styleName: "line-height", valType: "classValue", hasUnit: true, willRatio: true, placeholder: "number", accept: [NUMBER_REG] }],
   // 列表项标记类型
   ["list", { styleName: "list-style-type", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
-  ["list-inside", { preStyle: "list-style-position: inside; ", placeholder: "" }],
-  ["list-outside", { preStyle: "list-style-position: outside; ", placeholder: "" }],
+  ["list-inside", { preStyle: "list-style-position: inside; " }],
+  ["list-outside", { preStyle: "list-style-position: outside; " }],
   // 文本对齐
   ["text", { styleName: "text-align", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
   // 文本颜色 tailwindcss不一致 文本颜色不透明度未实现
   ["color", { styleName: "color", valType: "classValue", placeholder: "#string", accept: [STRING_REG] }],
   // 文本装饰
-  ["underline", { styleName: "text-decoration", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["line-through", { styleName: "text-decoration", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["no-underline", { styleName: "text-decoration", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
+  ["underline", { styleName: "text-decoration", valType: "classFullName", accept: [STRING_REG] }],
+  ["line-through", { styleName: "text-decoration", valType: "classFullName", accept: [STRING_REG] }],
+  ["no-underline", { styleName: "text-decoration", valType: "classFullName", accept: [STRING_REG] }],
   // 文本转换
-  ["uppercase", { styleName: "text-transform", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["lowercase", { styleName: "text-transform", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["capitalize", { styleName: "text-transform", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
-  ["normal-case", { styleName: "text-transform", valType: "classFullName", placeholder: "", accept: [STRING_REG] }],
+  ["uppercase", { styleName: "text-transform", valType: "classFullName", accept: [STRING_REG] }],
+  ["lowercase", { styleName: "text-transform", valType: "classFullName", accept: [STRING_REG] }],
+  ["capitalize", { styleName: "text-transform", valType: "classFullName", accept: [STRING_REG] }],
+  ["normal-case", { styleName: "text-transform", valType: "classFullName", accept: [STRING_REG] }],
   // 文本溢出
-  ["truncate", { preStyle: "overflow: hidden; text-overflow: ellipsis; white-space: nowrap; ", placeholder: "" }],
+  ["truncate", { preStyle: "overflow: hidden; text-overflow: ellipsis; white-space: nowrap; " }],
   ["overflow-ellipsis", { styleName: "text-overflow", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
   ["overflow-clip", { styleName: "text-overflow", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
   // 垂直对齐
@@ -175,15 +175,15 @@ const classMap = new Map([
   ["whitespace", { styleName: "white-space", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
   ["whitespace-pre", { styleName: "white-space", valType: "classValue", valueWrapper: { line: "pre-line", wrap: "pre-wrap" }, placeholder: "string", accept: [STRING_REG] }],
   // 文本换行
-  ["break-normal", { preStyle: "overflow-wrap: normal; word-break: normal; ", placeholder: "" }],
-  ["break-words", { preStyle: "overflow-wrap: break-word; ", placeholder: "" }],
-  ["break-all", { preStyle: "word-break: break-all; ", placeholder: "" }],
+  ["break-normal", { preStyle: "overflow-wrap: normal; word-break: normal; " }],
+  ["break-words", { preStyle: "overflow-wrap: break-word; " }],
+  ["break-all", { preStyle: "word-break: break-all; " }],
   // 背景图像固定
-  ["bg-fixed", { styleName: "background-attachment", valType: "classValue", placeholder: "", accept: [STRING_REG] }],
-  ["bg-local", { styleName: "background-attachment", valType: "classValue", placeholder: "", accept: [STRING_REG] }],
-  ["bg-scroll", { styleName: "background-attachment", valType: "classValue", placeholder: "", accept: [STRING_REG] }],
+  ["bg-fixed", { styleName: "background-attachment", valType: "classValue", accept: [STRING_REG] }],
+  ["bg-local", { styleName: "background-attachment", valType: "classValue", accept: [STRING_REG] }],
+  ["bg-scroll", { styleName: "background-attachment", valType: "classValue", accept: [STRING_REG] }],
   // 背景图像裁剪
-  ["bg-clip", { styleName: "background-clip", valType: "classValue", valueWrapper: { border: "border-box", padding: "padding-box", content: "content-box" }, placeholder: "", accept: [STRING_REG] }],
+  ["bg-clip", { styleName: "background-clip", valType: "classValue", valueWrapper: { border: "border-box", padding: "padding-box", content: "content-box" }, accept: [STRING_REG] }],
   // 背景颜色
   ["bg-color", { styleName: "background-color", valType: "classValue", placeholder: "#string", accept: [STRING_REG] }],
   // Background Origin
@@ -193,7 +193,7 @@ const classMap = new Map([
   ["bg-position-left", { styleName: "background-position", valType: "classValue", valueWrapper: { bottom: "left bottom", top: "left top" }, placeholder: "string", accept: [STRING_REG] }],
   ["bg-position-right", { styleName: "background-position", valType: "classValue", valueWrapper: { bottom: "right bottom", top: "right top" }, placeholder: "string", accept: [STRING_REG] }],
   // 背景图像重复
-  ["bg-no-repeat", { preStyle: "flex: 1 1 0%; ", placeholder: "" }],
+  ["bg-no-repeat", { preStyle: "flex: 1 1 0%; " }],
   ["bg-repeat", { styleName: "background-repeat", valType: "classValue", valueWrapper: { x: "repeat-x", y: "repeat-y" }, placeholder: "string", accept: [STRING_REG] }],
   ["bg-size", { styleName: "background-size", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
   // 背景图像、渐变色停止 未实现
@@ -220,14 +220,14 @@ const classMap = new Map([
   ["opacity", { styleName: "opacity", valType: "percent", placeholder: "0~100", accept: [NUMBER_REG] }],
   // mix-blend
   ["mix-blend", { styleName: "mix-blend-mode", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
-  ["mix-blend-color-dodge", { preStyle: "mix-blend-mode: color-dodge; ", placeholder: "" }],
-  ["mix-blend-color-burn", { preStyle: "mix-blend-mode: color-burn; ", placeholder: "" }],
-  ["mix-blend-soft-light", { preStyle: "mix-blend-mode:soft-light; ", placeholder: "" }],
+  ["mix-blend-color-dodge", { preStyle: "mix-blend-mode: color-dodge; " }],
+  ["mix-blend-color-burn", { preStyle: "mix-blend-mode: color-burn; " }],
+  ["mix-blend-soft-light", { preStyle: "mix-blend-mode:soft-light; " }],
   // Background Blend Mode
   ["bg-mix-blend", { styleName: "mix-blend-mode", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
-  ["bg-mix-blend-color-dodge", { preStyle: "mix-blend-mode: color-dodge; ", placeholder: "" }],
-  ["bg-mix-blend-color-burn", { preStyle: "mix-blend-mode: color-burn; ", placeholder: "" }],
-  ["bg-mix-blend-soft-light", { preStyle: "mix-blend-mode:soft-light; ", placeholder: "" }],
+  ["bg-mix-blend-color-dodge", { preStyle: "mix-blend-mode: color-dodge; " }],
+  ["bg-mix-blend-color-burn", { preStyle: "mix-blend-mode: color-burn; " }],
+  ["bg-mix-blend-soft-light", { preStyle: "mix-blend-mode:soft-light; " }],
   // filter backdrop-filter tailwindcss不一致,采用[],待优化
   ["filter", { styleName: "filter", valType: "bracket", hasUnit: true, placeholder: "number", accept: [NUMBER_REG] }],
   ["backdrop-filter", { styleName: "backdrop-filter", valType: "bracket", hasUnit: true, placeholder: "number", accept: [NUMBER_REG] }],
@@ -235,14 +235,14 @@ const classMap = new Map([
   ["border-collapse", { styleName: "border-collapse", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
   ["border-separate", { styleName: "border-collapse", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
   // 表格布局
-  ["table-auto", { styleName: "table-layout", valType: "classValue", placeholder: "", accept: [STRING_REG] }],
-  ["table-fixed", { styleName: "table-layout", valType: "classValue", placeholder: "", accept: [STRING_REG] }],
+  ["table-auto", { styleName: "table-layout", valType: "classValue", accept: [STRING_REG] }],
+  ["table-fixed", { styleName: "table-layout", valType: "classValue", accept: [STRING_REG] }],
   // 下划线传值,TODO下划线杂糅中划线
   ["transition", { styleName: "transition", valType: "classValue", hasUnit: true, unit: "ms", placeholder: "ms", accept: [NUMBER_REG, FULL_REG] }],
   ["ease", { styleName: "transition-timing-function", valType: "classValue", accept: [STRING_REG] }],
   ["delay", { styleName: "transition-delay", valType: "classValue", hasUnit: true, unit: "ms", placeholder: "ms", accept: [NUMBER_REG, FULL_REG] }],
   // 动画animate
-  ["animate-none", { preStyle: "animation: none; ", placeholder: "" }],
+  ["animate-none", { preStyle: "animation: none; " }],
   [
     "animate-spin",
     {
@@ -325,11 +325,11 @@ const classMap = new Map([
   // 表单外观 未实现
   // 光标效果
   ["cursor", { styleName: "cursor", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
-  ["cursor-not-allowed", { preStyle: "cursor: not-allowed; ", placeholder: "" }],
+  ["cursor-not-allowed", { preStyle: "cursor: not-allowed; " }],
   // 轮廓
-  ["outline-none", { preStyle: "outline: 2px solid transparent; outline-offset: 2px; ", placeholder: "" }],
-  ["outline-white", { preStyle: "outline: 2px dotted white; outline-offset: 2px; ", placeholder: "" }],
-  ["outline-black", { preStyle: "outline: 2px dotted black; outline-offset: 2px; ", placeholder: "" }],
+  ["outline-none", { preStyle: "outline: 2px solid transparent; outline-offset: 2px; " }],
+  ["outline-white", { preStyle: "outline: 2px dotted white; outline-offset: 2px; " }],
+  ["outline-black", { preStyle: "outline: 2px dotted black; outline-offset: 2px; " }],
   // 指向事件
   ["pointer-events", { styleName: "pointer-events", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
   // 大小调整 比tailwindcss不同
@@ -339,15 +339,28 @@ const classMap = new Map([
   // 屏幕阅读器、SVG未实现
 ])
 
+/**
+ * 生成全局累加个数空格
+ */
+const generateSpace = (function () {
+  let total = 1
+  return () => {
+    let res = ""
+    for (let index = 0; index < total; index++) {
+      res += " "
+    }
+    total++
+    return res
+  }
+})()
 const generateSnippetsJSON = () => {
   const jsonObj = {}
-  classMap.forEach(({ styleName, valType, placeholder }, key) => {
-    const isNotKeyValue = valType !== "key"
-    const jsonName = isNotKeyValue ? styleName : `${styleName}-${key}`
+  classMap.forEach(({ styleName, placeholder }, key) => {
+    let name = styleName ? (jsonObj[styleName] ? `${styleName}${generateSpace()}` : styleName) : key
 
-    jsonObj[jsonName] = {
+    jsonObj[name] = {
       prefix: key,
-      body: `${key}${isNotKeyValue ? "-" : ""}\${0:${placeholder}}`,
+      body: placeholder ? `${key}-\${0:${placeholder}}` : key,
     }
   })
 

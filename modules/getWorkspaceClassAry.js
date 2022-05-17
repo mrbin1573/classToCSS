@@ -23,7 +23,15 @@ function getWorkspaceClassAry() {
     classStr.push($2)
   })
 
-  let classAry = classStr.map((str) => str.split(/\s+/g)).flat()
+  let classAry = classStr
+    .map((str) => {
+      let _res = /(['|"])(.+)\1/gim.exec(str) || str
+      Array.isArray(_res) && (_res = _res[2])
+      _res = _res.split(/\s+/g)
+      
+      return _res
+    })
+    .flat()
 
   // 当前编辑区和文件间交叉去重
   workspaceCSSCatch.set(fileName, classAry)

@@ -1,5 +1,5 @@
 const { Uri, workspace } = require("vscode")
-const { generateCSSFileName } = require("./config")
+const { GOLBAL_FILE_NAME, APPLY_FILE_NAME, APPLY_HEAD_DES } = require("./config")
 
 /**
  * @description: String转uint8array
@@ -60,7 +60,7 @@ const autoLinkCSSFile = () => {
     if (!res.length) return
     const { fsPath } = res[0]
     let text = await getTextFromFilePath(fsPath, true)
-    const insertLinkStr = `<link rel="stylesheet" href="/${generateCSSFileName}"`
+    const insertLinkStr = `<link rel="stylesheet" href="/${GOLBAL_FILE_NAME}"`
     const hasInserted = text.includes(insertLinkStr)
 
     if (hasInserted) return
@@ -103,6 +103,13 @@ const toSpecialStr = (string) => {
   return result
 }
 
+/**
+ * @description: 生成apply文件
+ */
+const addApplyFile = () => {
+  writeStringToPath(APPLY_HEAD_DES, workspace.workspaceFolders[0].uri.fsPath + "\\" + APPLY_FILE_NAME)
+}
+
 module.exports = {
   stringToUint8Array,
   uint8ArrayToString,
@@ -111,4 +118,5 @@ module.exports = {
   isNumberStr,
   autoLinkCSSFile,
   toSpecialStr,
+  addApplyFile,
 }
