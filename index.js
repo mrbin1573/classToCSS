@@ -5,7 +5,7 @@ const { autoLinkCSSFile } = require("./modules/utils")
 async function activate() {
   renderCSS2File()
 
-  autoLinkCSSFile()
+  // autoLinkCSSFile()
 
   vscode.workspace.onDidSaveTextDocument(() => {
     renderCSS2File()
