@@ -1,0 +1,7 @@
+/**
+* classToCSS Apply File
+* will automatically compile to classtocss_global.css file
+* example
+* .card {
+*    @apply .mt-20 .p-30 .radius-30 .shadow-0_0_20_#000;
+* }*/
