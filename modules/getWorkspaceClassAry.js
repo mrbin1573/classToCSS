@@ -17,7 +17,7 @@ function getWorkspaceClassAry() {
 
   if (!text) return []
 
-  const classReg = /class=(['|"])(.+?)\1/gim // \1 表示第一个组匹配内容，不会出现匹配到'xxx"
+  const classReg = /[class|className]=(['|"])(.+?)\1/gim // \1 表示第一个组匹配内容，不会出现匹配到'xxx"
   let classStr = []
   text.replace(classReg, ($0, $1, $2) => {
     classStr.push($2)
@@ -28,7 +28,7 @@ function getWorkspaceClassAry() {
       let _res = /(['|"])(.+)\1/gim.exec(str) || str
       Array.isArray(_res) && (_res = _res[2])
       _res = _res.split(/\s+/g)
-      
+
       return _res
     })
     .flat()

@@ -36,11 +36,10 @@
     "onLanguage:vue",
     "onLanguage:vue-html",
     "onLanguage:javascript",
-    "onLanguage:typescriptreact",
-    "onLanguage:javascriptreact",
-    "onLanguage:ftl"
+    "onLanguage:ftl",
+    "onLanguage:react"
   ],
-  "repository": "https://github.com/mrbin1573/classToCss",
+  "repository": "https://github.com/mrbin1573/classToCSS",
   "main": "./index.js",
   "contributes": {
     "languages": [
@@ -51,6 +50,15 @@
         ],
         "aliases": [
           "FreeMarker"
+        ]
+      },
+      {
+        "id": "react",
+        "extensions": [
+          ".jsx"
+        ],
+        "aliases": [
+          "react"
         ]
       }
     ],
@@ -72,15 +80,11 @@
         "path": "./snippets.json"
       },
       {
-        "language": "typescriptreact",
-        "path": "./snippets.json"
-      },
-      {
-        "language": "javascriptreact",
-        "path": "./snippets.json"
-      },
-      {
         "language": "ftl",
+        "path": "./snippets.json"
+      },
+      {
+        "language": "react",
         "path": "./snippets.json"
       }
     ],
