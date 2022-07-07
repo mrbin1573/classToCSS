@@ -1,14 +1,19 @@
 const { workspace } = require("vscode")
 const classMap = require("./classMap")
-const { isNumberStr } = require("./utils")
+const { LOCAL_CONF_NAME } = require("./config")
+const { isNumberStr, getTextFromFilePath } = require("./utils")
 
 /**
  * @description: className转换为style
  * @param className
  * @return {Object} {style: '', isolateStyle: '独立的不包裹在className中的style'}
  */
-module.exports = function (className) {
-  const { unit, valueRatio } = workspace.getConfiguration("classtocss")
+module.exports = async function (className) {
+  let localConfig = await getTextFromFilePath("\\" + LOCAL_CONF_NAME)
+  if (localConfig) {
+    localConfig = JSON.parse(localConfig)
+  }
+  const { unit, valueRatio } = localConfig || workspace.getConfiguration("classtocss")
   const isMinus = className.lastIndexOf("--") > -1
   const spliteIndex = isMinus ? className.lastIndexOf("--") : className.lastIndexOf("-")
   const resInfo = { style: "", isolateStyle: "" }
