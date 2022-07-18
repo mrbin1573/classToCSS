@@ -74,14 +74,14 @@ const classMap = new Map([
   // Z-Index
   ["z", { styleName: "z-index", valType: "classValue", placeholder: "number", accept: [NUMBER_REG] }],
   // Flex Direction
-  ["flex-row", { styleName: "flex-direction", preStyle: "display: flex; ", valType: "classValue", accept: [STRING_REG] }],
-  ["flex-row-reverse", { styleName: "flex-direction", preStyle: "display: flex; ", valType: "classValue", valueWrapper: { reverse: "row-reverse" }, accept: [STRING_REG] }],
-  ["flex-col", { styleName: "flex-direction", preStyle: "display: flex; ", valType: "classValue", valueWrapper: { col: "column" }, accept: [STRING_REG] }],
-  ["flex-col-reverse", { styleName: "flex-direction", preStyle: "display: flex; ", valType: "classValue", valueWrapper: { "col-reserse": "column-reverse" }, accept: [STRING_REG] }],
+  ["flex-row", { styleName: "flex-direction", valType: "classValue", accept: [STRING_REG] }],
+  ["flex-row-reverse", { styleName: "flex-direction", valType: "classValue", valueWrapper: { reverse: "row-reverse" }, accept: [STRING_REG] }],
+  ["flex-col", { styleName: "flex-direction", valType: "classValue", valueWrapper: { col: "column" }, accept: [STRING_REG] }],
+  ["flex-col-reverse", { styleName: "flex-direction", valType: "classValue", valueWrapper: { "col-reserse": "column-reverse" }, accept: [STRING_REG] }],
   // Flex Wrap
-  ["flex-wrap", { styleName: "flex-wrap", preStyle: "display: flex; ", valType: "classValue", accept: [STRING_REG] }],
-  ["flex-wrap-reverse", { styleName: "flex-wrap", preStyle: "display: flex; ", valType: "classValue", accept: [STRING_REG] }],
-  ["flex-nowrap", { styleName: "flex-wrap", preStyle: "display: flex; ", valType: "classValue", accept: [STRING_REG] }],
+  ["flex-wrap", { styleName: "flex-wrap", valType: "classValue", accept: [STRING_REG] }],
+  ["flex-wrap-reverse", { styleName: "flex-wrap", valType: "classValue", accept: [STRING_REG] }],
+  ["flex-nowrap", { styleName: "flex-wrap", valType: "classValue", accept: [STRING_REG] }],
   // Flex
   ["flex-1", { preStyle: "flex: 1 1 0%; " }],
   ["flex-auto", { preStyle: "flex: 1 1 auto; " }],
@@ -97,7 +97,7 @@ const classMap = new Map([
   ["order", { styleName: "order", valType: "classValue", placeholder: "number", accept: [NUMBER_REG] }], // tailwindcss差异
   // Grid未实现 Gap未实现
   // Justify Content
-  ["justify", { styleName: "justify-content", preStyle: "display: flex; ", valType: "classValue", valueWrapper: { start: "flex-start", end: "flex-end", between: "space-between", around: "space-around", evenly: "space-evenly" }, placeholder: "|", accept: [STRING_REG] }],
+  ["justify", { styleName: "justify-content", valType: "classValue", valueWrapper: { start: "flex-start", end: "flex-end", between: "space-between", around: "space-around", evenly: "space-evenly" }, placeholder: "|", accept: [STRING_REG] }],
   // Justify Items
   ["justify-items", { styleName: "justify-items", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
   // justify-self
