@@ -6,14 +6,21 @@ const { isNumberStr, getTextFromFilePath } = require("./utils")
 /**
  * @description: className转换为style
  * @param className
- * @return {Object} {style: '', isolateStyle: '独立的不包裹在className中的style'}
+ * @return {Promise} {style: '', isolateStyle: '独立的不包裹在className中的style'}
  */
 module.exports = async function (className) {
-  let localConfig = await getTextFromFilePath("\\" + LOCAL_CONF_NAME)
-  if (localConfig) {
-    localConfig = JSON.parse(localConfig)
-  }
-  const { unit, valueRatio } = localConfig || workspace.getConfiguration("classtocss")
+  /**
+   * 处理配置项，local优先级高于全局
+   */
+  let localConfig
+  try {
+    localConfig = await getTextFromFilePath("\\" + LOCAL_CONF_NAME)
+  } catch (error) {}
+  if (localConfig) localConfig = JSON.parse(localConfig)
+  const editorConfig = workspace.getConfiguration("classtocss")
+  const totalConfig = { ...editorConfig, ...localConfig } // 后覆盖前，实现优先级
+  const { unit, valueRatio } = totalConfig
+
   const isMinus = className.lastIndexOf("--") > -1
   const spliteIndex = isMinus ? className.lastIndexOf("--") : className.lastIndexOf("-")
   const resInfo = { style: "", isolateStyle: "" }

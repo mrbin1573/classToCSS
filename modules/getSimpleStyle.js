@@ -4,16 +4,19 @@ const { toSpecialStr } = require("./utils")
 /**
  * @description: 生成style样式
  * @param {Array} classAry className数组
- * @return {String} css
+ * @return {Promise} css
  */
-const getSimpleStyle = (classAry) => {
-  return classAry.reduce((allStyle, className) => {
-    const { style, isolateStyle } = className2style(className)
-
+const getSimpleStyle = async (classAry) => {
+  let allStyle = ""
+  for (let index = 0; index < classAry.length; index++) {
+    const className = classAry[index]
+    const { style, isolateStyle } = await className2style(className)
     if (isolateStyle) allStyle += isolateStyle + "\n"
 
-    return (allStyle += !!style ? `.${toSpecialStr(className)} { ${style} } \n` : "")
-  }, "")
+    allStyle += !!style ? `.${toSpecialStr(className)} { ${style} } \n` : ""
+  }
+
+  return allStyle
 }
 
 module.exports = getSimpleStyle
