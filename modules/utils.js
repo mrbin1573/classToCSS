@@ -7,12 +7,21 @@ const { GOLBAL_FILE_NAME, APPLY_FILE_NAME, APPLY_HEAD_DES } = require("./config"
  * @return {Uint8Array} Uint8Array
  */
 const stringToUint8Array = (str) => {
-  var arr = []
-  for (var i = 0, j = str.length; i < j; ++i) {
-    arr.push(str.charCodeAt(i))
+  const buffer = []
+  for (let i of str) {
+    const _code = i.charCodeAt(0)
+    if (_code < 0x80) {
+      buffer.push(_code)
+    } else if (_code < 0x800) {
+      buffer.push(0xc0 + (_code >> 6))
+      buffer.push(0x80 + (_code & 0x3f))
+    } else if (_code < 0x10000) {
+      buffer.push(0xe0 + (_code >> 12))
+      buffer.push(0x80 + ((_code >> 6) & 0x3f))
+      buffer.push(0x80 + (_code & 0x3f))
+    }
   }
-
-  return new Uint8Array(arr)
+  return Uint8Array.from(buffer)
 }
 
 /**
