@@ -1,9 +1,24 @@
 const config = {
   GOLBAL_FILE_NAME: "classtocss_global.css",
   LOCAL_CONF_NAME: "classtocss_config.json",
-  GLOBAL_HEAD_DES: `/**\n* The classToCSS plugin automatically generates global style\n* Changes are invalid and will be overwritten\n*/\n`,
-  APPLY_FILE_NAME: "classtocss_apply.css",
-  APPLY_HEAD_DES: `/**\n* classToCSS Apply File\n* will automatically compile to classtocss_global.css file\n* example\n* .card {\n*    @apply .mt-20 .p-30 .radius-30 .shadow-0_0_20_#000;\n* }*/`,
+  APPLY_FILE_NAME: "classtocss_apply.scss",
+  GLOBAL_HEAD_DES: `/**
+ * classToCSS插件自动生成的全局样式，任何手动修改都会被覆盖
+ * 需要手动引入到全局生效的位置，如index.html
+ */\n`,
+  APPLY_HEAD_DES: `/**
+ * classToCSS插件生成的apply样式文件
+ * 将会自动编译至classtocss_global.css文件中
+ * 根据需要自行编辑，不会被覆盖
+ */
+/* 预设重置样式代码 */
+.app-reset {
+  @apply .p-0 .m-0 .content-box;
+}
+/* 预设水平垂直居中（flex） */
+.mid-center {
+  @apply .flex .justify-center .align-items-center;
+}`,
 }
 
 module.exports = config
