@@ -22,11 +22,6 @@ const renderCSS2File = async () => {
   totalSimpleClassAry.sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0)) // 排序
   !!totalSimpleClassAry && (totalStyle = await getSimpleStyle(totalSimpleClassAry))
 
-  // 写入当前文件
-  // editor.edit((TextEditorEdit) => {
-  //   TextEditorEdit.insert(new vscode.Position(lineCount, 0), `\n<style>\n${styles}</style>`)
-  // })
-
   /**
    * apply class
    */
