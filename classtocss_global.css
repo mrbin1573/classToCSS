@@ -1,0 +1,9 @@
+/**
+ * classToCSS插件自动生成的全局样式，任何手动修改都会被覆盖
+ * 需要手动引入到全局生效的位置，如index.html
+ */
+/* apply result */
+.app-reset { padding: 0rpx; margin: 0rpx; box-sizing: content-box;  }
+.mid { display: flex; align-items: center;  }
+.center { display: flex; justify-content: center;  }
+.mid-center { display: flex; justify-content: center; align-items: center;  }

@@ -11,15 +11,13 @@ const getApplyStyle = async (classAry) => {
   for (let index = 0; index < classAry.length; index++) {
     const { className, classList } = classAry[index]
 
-    let acc = { style: "", isolateStyle: "\n" }
+    let accStyle = ''
     for (let idx = 0; idx < classList.length; idx++) {
       const curName = classList[idx]
-      const { style, isolateStyle } = await className2style(curName)
-      acc.style += style + " "
-      acc.isolateStyle += isolateStyle || ""
+      accStyle += await className2style(curName)
     }
 
-    allStyle += `.${toSpecialStr(className)} { ${acc.style} }${acc.isolateStyle}`
+    allStyle += `.${className} { ${accStyle} }\n`
   }
 
   return allStyle

@@ -15,9 +15,25 @@ const config = {
 .app-reset {
   @apply .p-0 .m-0 .content-box;
 }
+/* 预设垂直居中（flex） */
+.mid {
+  @apply .flex .align-items-center;
+}
+/* 预设水平居中（flex） */
+.center {
+  @apply .flex .justify-center;
+}
 /* 预设水平垂直居中（flex） */
 .mid-center {
   @apply .flex .justify-center .align-items-center;
+}
+/* 预设水平两端对齐、垂直居中（flex） */
+.mid-between {
+  @apply .flex .justify-between .align-items-center;
+}
+/* 预设水平平均分布、垂直居中（flex） */
+.mid-around {
+  @apply .flex .justify-around .align-items-center;
 }`,
 }
 

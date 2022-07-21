@@ -10,10 +10,9 @@ const getSimpleStyle = async (classAry) => {
   let allStyle = ""
   for (let index = 0; index < classAry.length; index++) {
     const className = classAry[index]
-    const { style, isolateStyle } = await className2style(className)
-    if (isolateStyle) allStyle += isolateStyle + "\n"
+    const style = await className2style(className)
 
-    allStyle += !!style ? `.${toSpecialStr(className)} { ${style} } \n` : ""
+    allStyle += !!style ? `.${toSpecialStr(className)} { ${style} }\n` : ""
   }
 
   return allStyle

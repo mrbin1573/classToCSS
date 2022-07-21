@@ -19,7 +19,7 @@ const renderCSS2File = async () => {
   let totalSimpleClassAry = getWorkspaceClassAry() // 编辑区的class
   if (!lastClsssNamAry.length) lastClsssNamAry = await getLastClassAry() // classtocss_global.css历史数据
   totalSimpleClassAry = [...new Set([...lastClsssNamAry, ...totalSimpleClassAry])] // 去重
-  totalSimpleClassAry.sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0)) // 排序
+  // totalSimpleClassAry.sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0)) // 排序
   !!totalSimpleClassAry && (totalStyle = await getSimpleStyle(totalSimpleClassAry))
 
   /**
