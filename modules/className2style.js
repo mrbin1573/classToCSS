@@ -15,7 +15,7 @@ module.exports = async function (className) {
   let localConfig
   try {
     localConfig = await getTextFromFilePath("\\" + LOCAL_CONF_NAME)
-  } catch (error) {}
+  } catch (error) { }
   if (localConfig) localConfig = JSON.parse(localConfig)
   const editorConfig = workspace.getConfiguration("classtocss")
   const totalConfig = { ...editorConfig, ...localConfig } // 后覆盖前，实现优先级
@@ -34,7 +34,7 @@ module.exports = async function (className) {
   if (!mapInfo) mapInfo = classMap.get(classKey)
   if (!mapInfo) return resInfo
 
-  const { styleName, preStyle, hasUnit, valType, valueWrapper, willRatio, unit: localUnit, accept: acceptRegAry, isolateStyle } = mapInfo
+  const { styleName, preStyle, hasUnit, valType, valueWrapper, wrapperFun, willRatio, unit: localUnit, accept: acceptRegAry, isolateStyle } = mapInfo
   resInfo.isolateStyle = isolateStyle
 
   const isCValue = valType === "classValue"
@@ -85,6 +85,9 @@ module.exports = async function (className) {
     isPercent && (styleValue = styleValue / 100)
     isFull && (styleValue = "100%")
     isBracket && (styleValue = `${classKey}(${classValue})`)
+    if (!!wrapperFun) {
+      !!wrapperFun && (styleValue = wrapperFun(styleValue))
+    }
 
     if (hasUnit && !isFull) {
       isBracket ? (styleValue = styleValue.replace(")", `${localUnit || unit})`)) /**括号中添加单位 */ : (styleValue += localUnit || unit)

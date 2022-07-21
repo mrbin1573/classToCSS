@@ -155,7 +155,7 @@ const classMap = new Map([
   // 文本对齐
   ["text", { styleName: "text-align", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
   // 文本颜色 tailwindcss不一致 文本颜色不透明度未实现
-  ["color", { styleName: "color", valType: "classValue", placeholder: "#string", accept: [STRING_REG] }],
+  ["color", { styleName: "color", valType: "classValue", wrapperFun: val => '#' + val, placeholder: "number", accept: [NUMBER_REG] }],
   // 文本装饰
   ["underline", { styleName: "text-decoration", valType: "classFullName", accept: [STRING_REG] }],
   ["line-through", { styleName: "text-decoration", valType: "classFullName", accept: [STRING_REG] }],
