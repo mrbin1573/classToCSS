@@ -149,7 +149,7 @@ const classMap = new Map([
   // 行高
   ["line-height", { styleName: "line-height", valType: "classValue", hasUnit: true, willRatio: true, placeholder: "number", accept: [NUMBER_REG] }],
   // 列表项标记类型
-  ["list", { styleName: "list-style-type", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
+  ["list-style", { styleName: "list-style-type", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
   ["list-inside", { preStyle: "list-style-position: inside; " }],
   ["list-outside", { preStyle: "list-style-position: outside; " }],
   // 文本对齐
