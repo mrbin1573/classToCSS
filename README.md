@@ -120,8 +120,7 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 
 # class 语法
 
-以下语法提供值不满足时，可用自定义值语法`[]`
-如`top-[50w]`
+以下语法提供值不满足时，可用自定义值语法`[]`，如`top-[50w]`；负值为`m--10`的方式
 
 ## margin
 
@@ -138,7 +137,16 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 
 ## padding
 
-> padding 和 margin 类似，不再累述
+| class | style                                  | 解释 |
+| :---- | :------------------------------------- | :--- |
+| p-6   | padding: 6px;                          |
+| p--6  | padding: -6px;                         | 负值 |
+| pt-6  | padding-top: 6px;                      |
+| pr-6  | padding-right: 6px;                    |
+| pb-6  | padding-bottom: 6px;                   |
+| pl-6  | padding-left: 6px;                     |
+| px-6  | padding-left: 6px; padding-right: 6px; |
+| py-6  | padding-top: 6px; padding-bottom: 6px; |
 
 ## width
 
