@@ -25,7 +25,7 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 - [width](#width)
 - [height](#height)
 - [position](#position)
-- [top、right、bottom、left](#top、right、bottom、left)
+- [top-right-bottom-left](#top-right-bottom-left)
 - [z-index](#z-index)
 - [box-sizing](#box-sizing)
 - [display](#display)
@@ -165,7 +165,7 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 | fixed    | position: fixed;    |
 | sticky   | position: sticky;   |
 
-## top、right、bottom、left
+## top-right-bottom-left
 
 | class    | style        | 解释 |
 | :------- | :----------- | :--- |
