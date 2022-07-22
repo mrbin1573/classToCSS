@@ -40,7 +40,7 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 - [align-content](#align-content)
 - [align-self](#align-self)
 - [flex-wrap](#flex-wrap)
-- [flex-grow-shrink)[#flex-grow-shrink]
+- [flex-grow-shrink](#flex-grow-shrink)
 - [order](#order)
 - [font-size](#font-size)
 - [font-weight](#font-weight)
