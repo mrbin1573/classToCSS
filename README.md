@@ -2,6 +2,8 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 
 > 根目录生成 classtocss_global.css 文件，所有 stlye 都变一再里面。需要手动引入至项目能生效得地方
 
+# Releases
+
 - 一次安装，永久任意项目生效
 
 - 全局去重，有效减小压缩代码体积
@@ -163,10 +165,10 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 
 | class     | style            |
 | :-------- | :--------------- |
-| h-6       | height: 6px;      |
-| h-full    | height: 100%;     |
-| h-66p     | height: 66%;      |
-| h-66vw    | height: 66vw;     |
+| h-6       | height: 6px;     |
+| h-full    | height: 100%;    |
+| h-66p     | height: 66%;     |
+| h-66vw    | height: 66vw;    |
 | max-h-600 | max-width: 60px; |
 | min-h-60  | min-width: 60px; |
 
