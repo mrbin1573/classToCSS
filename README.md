@@ -161,7 +161,14 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 
 ## height
 
-高和宽类似，不再累述
+| class     | style            |
+| :-------- | :--------------- |
+| h-6       | height: 6px;      |
+| h-full    | height: 100%;     |
+| h-66p     | height: 66%;      |
+| h-66vw    | height: 66vw;     |
+| max-h-600 | max-width: 60px; |
+| min-h-60  | min-width: 60px; |
 
 ## position
 
