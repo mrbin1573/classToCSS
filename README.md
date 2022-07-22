@@ -18,6 +18,53 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 
 ---
 
+# class 语法目录
+
+- [margin](#margin)
+- [padding](#padding)
+- [width](#width)
+- [height](#height)
+- [position](#position)
+- [top、right、bottom、left](#top、right、bottom、left)
+- [z-index](#z-index)
+- [box-sizing](#box-sizing)
+- [display](#display)
+- [float](#float)
+- [overflow](#overflow)
+- [visibility](#visibility)
+- [flex-direction](#flex-direction)
+- [justify-content](#justify-content)
+- [justify-items](#justify-items)
+- [justify-self](#justify-self)
+- [align-items](#align-items)
+- [align-content](#align-content)
+- [align-self](#align-self)
+- [flex-wrap](#flex-wrap)
+- [flex-grow-shrink)[#flex-grow-shrink]
+- [order](#order)
+- [font-size](#font-size)
+- [font-weight](#font-weight)
+- [font-family](#font-family)
+- [font-style](#font-style)
+- [letter-spacing](#letter-spacing)
+- [line-height](#line-height)
+- [color](#color)
+- [border-radius](#border-radius)
+- [border-width](#border-width)
+- [opacity](#opacity)
+- [cursor](#cursor)
+- [user-select](#user-select)
+- [list-style-type](#list-style-type)
+- [list-style-position](#list-style-position)
+- [text-align](#text-align)
+- [text-decoration-line](#text-decoration-line)
+- [text-decoration-color](#text-decoration-color)
+- [文本溢出显示为...](#文本溢出显示为...)
+- [text-transform](#text-transform)
+- [background-color](#background-color)
+
+---
+
 # 配置选项
 
 可在全局配置中设置，也可以在根目录新建`classtocss_config.json`文件，项目内的配置文件优先级高于全局配置
@@ -93,7 +140,7 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 
 > padding 和 margin 类似，不再累述
 
-## 宽度
+## width
 
 | class     | style            |
 | :-------- | :--------------- |
@@ -104,7 +151,7 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 | max-w-600 | max-width: 60px; |
 | min-w-60  | min-width: 60px; |
 
-## 高度
+## height
 
 高和宽类似，不再累述
 
@@ -134,7 +181,7 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 | :---- | :---------- |
 | z-6   | z-index: 6; |
 
-## box sizding
+## box-sizing
 
 | class       | style                    |
 | :---------- | :----------------------- |
@@ -184,7 +231,7 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 | visible       | visibility: visible; |                               |
 | invisible     | visibility: hidden;  |                               |
 
-## flex direction
+## flex-direction
 
 | class       | style                           | 解释                                                                                             |
 | :---------- | :------------------------------ | :----------------------------------------------------------------------------------------------- |
@@ -193,7 +240,7 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 | col-reverse | flex-direction: column-reverse; |
 | flex-xx     | flex-direction: xx;             | xx：row、row-reverse、column、column-reverse、col（同 column）、col-reverse（同 column-reverse） |
 
-## justify content
+## justify-content
 
 | class                  | style                           | 解释                                                      |
 | :--------------------- | :------------------------------ | :-------------------------------------------------------- |
@@ -201,43 +248,43 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 | space-between、between | justify-content: space-between; |                                                           |
 | space-around、around   | justify-content: space-around;  |                                                           |
 
-## justify items
+## justify-items
 
 | class            | style              | 解释                                                           |
 | :--------------- | :----------------- | :------------------------------------------------------------- |
 | justify-items-xx | justify-items: xx; | xx：center、startend、flex-start、flex-end、left、right、start |
 
-## justify self
+## justify-self
 
 | class           | style             | 解释                                  |
 | :-------------- | :---------------- | :------------------------------------ |
 | justify-self-xx | justify-self: xx; | xx：center 、 start 、 end 、stretcht |
 
-## align items
+## align-items
 
 | class    | style            | 解释                                                               |
 | :------- | :--------------- | :----------------------------------------------------------------- |
 | items-xx | align-items: xx; | xx：center、start、end、flex-start、flex-end、self-start、self-end |
 
-## align content
+## align-content
 
 | class      | style              | 解释                                         |
 | :--------- | :----------------- | :------------------------------------------- |
 | content-xx | align-content: xx; | xx：center、start、end、flex-start、flex-end |
 
-## align self
+## align-self
 
 | class   | style           | 解释                                                                           |
 | :------ | :-------------- | :----------------------------------------------------------------------------- |
 | self-xx | align-self: xx; | xx：auto、normal、center、stretcht、self-start、self-end、flex-start、flex-end |
 
-## flex wrap
+## flex-wrap
 
 | class | style          | 解释                                    |
 | :---- | :------------- | :-------------------------------------- |
 | flex- | flex-wrap: xx; | xx 取值范围：wrap、wrap-reverse、nowrap |
 
-## flex grow shrink
+## flex-grow-shrink
 
 | class         | style           | 解释      |
 | :------------ | :-------------- | :-------- |
@@ -255,38 +302,38 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 | :------ | :-------- |
 | order-6 | order: 6; |
 
-## font size
+## font-size
 
 | class             | style           |
 | :---------------- | :-------------- |
 | font-size-6、fs-6 | font-size: 6px; |
 
-## font weight
+## font-weight
 
 | class                 | style          | 解释        |
 | :-------------------- | :------------- | :---------- |
 | font-weight-xx、fw-xx | font-size: xx; | xx：100~900 |
 
-## font family
+## font-family
 
 | class                 | style            | 解释         |
 | :-------------------- | :--------------- | :----------- |
 | font-family-xx、ff-xx | font-family: xx; | xx：字体名称 |
 
-## font style
+## font-style
 
 | class                | style               | 解释                        |
 | :------------------- | :------------------ | :-------------------------- |
 | font-style-xx、fs-xx | font-style: xx;     | xx：italic、oblique、normal |
 | italic               | font-style: italic; |                             |
 
-## letter spacing
+## letter-spacing
 
 | class                     | style                | 解释         |
 | :------------------------ | :------------------- | :----------- |
 | ls-xx、letter-spaceing-xx | letter-spaceing: xx; | xx：任意数字 |
 
-## line height
+## line-height
 
 | class                 | style              | 解释         |
 | :-------------------- | :----------------- | :----------- |
@@ -298,7 +345,7 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 | :------- | :---------- | :-------------------------------------------------------- |
 | color-xx | color: #xx; | xx：十六进制颜色值；注意不需要‘#’，如`#fff` 写`color-fff` |
 
-## border radius
+## border-radius
 
 | class                 | style                                              |
 | :-------------------- | :------------------------------------------------- |
@@ -309,7 +356,7 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 | r-bl-xx、radius-bl-xx | overflow: hidden; border-bottom-left-radius: xxpx  |
 | r-br-xx、radius-br-xx | overflow: hidden; border-bottom-right-radius: xxpx |
 
-## border width
+## border-width
 
 > xx 表示两位数以内的数字，大于两位的数字编译为`border-color`，如需要可用自定义语法`border-[666]`设置
 
@@ -321,7 +368,7 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 | border-b-xx | border-bottom-width: xx |
 | border-l-xx | border-left-width: xx   |
 
-## border color
+## border-color
 
 > xxx 表示三位数以上的十六进制颜色值，两位数的数字会编译为`border-width`
 
@@ -329,13 +376,13 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 | :--------- | :---------------- | :--------------------------------------------------------- |
 | border-xxx | border-width: xxx | xxx：十六进制颜色值；注意不需要‘#’，如`#fff` 写`color-fff` |
 
-## border style
+## border-style
 
 | class     | style            | 解释                    |
 | :-------- | :--------------- | :---------------------- |
 | border-xx | border-style: xx | xx：none、dotted、inset |
 
-## border opacity
+## opacity
 
 > 设置值需要放大 100 倍，也就是值为 0~100
 
@@ -351,25 +398,25 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 | not-allowed | cuosor：not-allowed |                |
 | cursor-xx   | cuosor：xx          | xx：属性合法值 |
 
-## user select
+## user-select
 
 | class     | style           | 解释                               |
 | :-------- | :-------------- | :--------------------------------- |
 | select-xx | user-select: xx | xx：none、auto、text、contain、all |
 
-## list style type
+## list-style-type
 
 | class   | style               | 解释                                    |
 | :------ | :------------------ | :-------------------------------------- |
 | list-xx | list-style-type: xx | xx：none、disc、circle、square、decimal |
 
-## list style position
+## list-style-position
 
 | class   | style                   | 解释                  |
 | :------ | :---------------------- | :-------------------- |
 | list-xx | list-style-position: xx | xx：inside、outsidel) |
 
-## text align
+## text-align
 
 | class   | style               | 解释                                                  |
 | :------ | :------------------ | :---------------------------------------------------- |
@@ -378,7 +425,7 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 | t-c     | text-align: center; |
 | text-xx | text-align: xx;     | left、right、center、justify、justify-all、start、end |
 
-## text decoration line
+## text-decoration-line
 
 | class         | style                               | 解释                                                  |
 | :------------ | :---------------------------------- | :---------------------------------------------------- |
@@ -386,7 +433,7 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 | line-through  | text-decoration-line: line-through; |
 | decoration-xx | text-decoration-line:xx;            | none、underline、overline、line-through、blink、unset |
 
-## text decoration color
+## text-decoration-color
 
 | class          | style                       | 解释                                                       |
 | :------------- | :-------------------------- | :--------------------------------------------------------- |
