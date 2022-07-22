@@ -2,8 +2,6 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 
 > 根目录生成 classtocss_global.css 文件，所有 stlye 都变一再里面。需要手动引入至项目能生效得地方
 
-# Releases
-
 - 一次安装，永久任意项目生效
 
 - 全局去重，有效减小压缩代码体积
