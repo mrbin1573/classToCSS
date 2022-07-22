@@ -5,3 +5,6 @@
 * .card {
 *    @apply .mt-20 .p-30 .radius-30 .shadow-0_0_20_#000;
 * }*/
+.card {
+  @apply .radius-15 .p-15 .mt-10 .bg-fff;
+}

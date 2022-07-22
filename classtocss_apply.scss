@@ -19,3 +19,6 @@
 .mid-center {
   @apply .flex .justify-center .align-items-center;
 }
+.card {
+  @apply .radius-15 .p-15 .mt-10 .bg-fff;
+}

@@ -7,3 +7,4 @@
 .mid { display: flex; align-items: center;  }
 .center { display: flex; justify-content: center;  }
 .mid-center { display: flex; justify-content: center; align-items: center;  }
+.card { overflow: hidden; border-radius: 30rpx; padding: 30rpx; margin-top: 20rpx;   }
