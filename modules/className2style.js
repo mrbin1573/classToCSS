@@ -15,18 +15,23 @@ module.exports = async function (className) {
   let localConfig
   try {
     localConfig = await getTextFromFilePath("\\" + LOCAL_CONF_NAME)
-  } catch (error) { }
+  } catch (error) {}
   if (localConfig) localConfig = JSON.parse(localConfig)
   const editorConfig = workspace.getConfiguration("classtocss")
   const totalConfig = { ...editorConfig, ...localConfig } // 后覆盖前，实现优先级
   const { unit, valueRatio } = totalConfig
 
   const classNameDetail = classNameMapper.find(({ matchReg }) => matchReg.test(className))
-  console.log('classNameDetail :>> ', classNameDetail);
-  if (!classNameDetail) return ''
+  if (!classNameDetail) return ""
 
   const { matchReg, wrapper, valIndex = 1 } = classNameDetail
-  const classVal = matchReg.exec(className)[valIndex]
+  /**
+   * 特殊值处理
+   */
+  const sepecialValReg = /^\w+\[\w+\]$/ // 特殊值正则
+  const isSpecial = sepecialValReg.test(className)
+
+  let classVal = isSpecial ? sepecialValReg.exec(className)[1].split("_") : matchReg.exec(className)[valIndex]
 
   return wrapper({ val: classVal, unit, ratio: valueRatio })
 }
