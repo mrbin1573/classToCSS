@@ -22,7 +22,7 @@ module.exports = async function (className) {
   const { unit, valueRatio } = totalConfig
 
   const classNameDetail = classNameMapper.find(({ matchReg }) => matchReg.test(className))
-  console.log('classNameDetail :>> ', classNameDetail);
+  // console.log('classNameDetail :>> ', classNameDetail);
   if (!classNameDetail) return ''
 
   const { matchReg, wrapper, valIndex = 1 } = classNameDetail

@@ -231,8 +231,25 @@ const classNameMapper = [
   { matchReg: eval(`/^(capitalize|uppercase|lowercase)$/`), wrapper: ({ val }) => `text-transform: ${val};`, placeholder: "string", },
 
   // 背景颜色
-  { matchReg: eval(`/^bg-(${HEX_COLOR_REG})$/`), wrapper: ({ val }) => `background-color: ${val};`, placeholder: "string", },
+  { matchReg: eval(`/^bg-(${HEX_COLOR_REG})$/`), wrapper: ({ val }) => `background-color: #${val};`, placeholder: "string", },
 
+  // animate
+  {
+    matchReg: eval(`/^animate-ping/`), wrapper: () => `animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite; }
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+    `, placeholder: "string",
+  },
+  {
+    matchReg: eval(`/^animate-spin/`), wrapper: () => `animation: spin 1s linear infinite; } 
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+`, placeholder: "string",
+  },
   /**
    * TODO 
    * isolate 
@@ -315,17 +332,7 @@ const classNameMapper = [
   //   ["delay", { styleName: "transition-delay", valType: "classValue", hasUnit: true, unit: "ms", placeholder: "ms", accept: [NUMBERS_REG, FULL_REG] }],
   //   // 动画animate
   //   ["animate-none", { preStyle: "animation: none; " }],
-  //   [
-  //     "animate-spin",
-  //     {
-  //       preStyle: "animation: spin 1s linear infinite;",
-  //       isolateStyle: `@keyframes spin {
-  //   from { transform: rotate(0deg); }
-  //   to { transform: rotate(360deg); }
-  // })$/`,
-  //       placeholder: "",
-  //     },
-  //   ],
+
   //   [
   //     "animate-ping",
   //     {
