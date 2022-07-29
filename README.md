@@ -350,9 +350,9 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 
 ## line-height
 
-| class                 | style              | 解释         |
-| :-------------------- | :----------------- | :----------- |
-| lh-xx、line-height-xx | letter-height: xx; | xx：任意数字 |
+| class                 | style              | 解释                        |
+| :-------------------- | :----------------- | :-------------------------- |
+| lh-xx、line-height-xx | letter-height: xx; | xx：合法值，如 1、1px、1rem |
 
 ## color
 
@@ -364,7 +364,7 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 
 | class                 | style                                              |
 | :-------------------- | :------------------------------------------------- |
-| round                 | overflow: hidden; border-radius: 100%              |
+| round、radius-full    | overflow: hidden; border-radius: 100%              |
 | r-xx、radius-xx       | overflow: hidden; border-radius: xxpx              |
 | r-tl-xx、radius-tl-xx | overflow: hidden; border-top-left-radius: xxpx     |
 | r-tr-xx、radius-tr-xx | overflow: hidden; border-top-right-radius: xxpx    |
