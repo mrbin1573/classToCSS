@@ -86,10 +86,11 @@ const classNameMapper = [
   { matchReg: eval(`/^invisible$/`), wrapper: () => `visibility: hidden;`, placeholder: "string" },
 
   // flex direction
-  { matchReg: eval(`/^flex-(row|row-reverse|column|column-reverse)$/`), wrapper: ({ val }) => `flex-direction: ${val};`, placeholder: "string" },
+  { matchReg: eval(`/^flex-(row|row-reverse|column-reverse)$/`), wrapper: ({ val }) => `flex-direction: ${val};`, placeholder: "string" },
   { matchReg: eval(`/^(flex-col|col)$/`), wrapper: () => `flex-direction: column;`, placeholder: "string" },
   { matchReg: eval(`/^col-reverse$/`), wrapper: () => `flex-direction: column-reverse;`, placeholder: "string" },
-  { matchReg: eval(`/^row$/`), wrapper: () => `flex-direction: row;`, placeholder: "string" },
+  { matchReg: eval(`/^row$/`), wrapper: () => `display: flex; flex-direction: row;`, placeholder: "string" },
+  { matchReg: eval(`/^column$/`), wrapper: () => `display: flex; flex-direction: column;`, placeholder: "string" },
 
   // justify content
   { matchReg: eval(`/^justify-(center|start|end|flex-start|flex-end|left|right)$/`), wrapper: ({ val }) => `justify-content: ${val};`, placeholder: "string" },
@@ -142,7 +143,7 @@ const classNameMapper = [
   { matchReg: eval(`/^italic$/`), wrapper: ({ val }) => `font-style: italic;`, placeholder: "string" },
 
   // letter-spacing
-  { matchReg: eval(`/^ls-(${NUMBERS_REG})$/`), wrapper: ({ val }) => `letter-spacing: ${val};`, placeholder: "string" },
+  { matchReg: eval(`/^ls-(${NUMBERS_REG})$/`), wrapper: ({ val }) => `letter-spacing: ${val / 100}em;`, placeholder: "string" },
   { matchReg: eval(`/^letter-spacing-(${NUMBERS_REG})$/`), wrapper: ({ val }) => `letter-spacing: ${val};`, placeholder: "string" },
 
   // line-height 不会缩放
@@ -219,6 +220,11 @@ const classNameMapper = [
   // shadow
   { matchReg: eval(`/^shadow-(${HEX_COLOR_REG})_(${HEX_COLOR_REG})_(${HEX_COLOR_REG})_(${HEX_COLOR_REG})_(${HEX_COLOR_REG})$/`), wrapper: ({ val }) => `background-color: ${val};`, placeholder: "string" },
 
+  // transition duration
+  { matchReg: eval(`/^duration-(${HEX_COLOR_REG})$/`), wrapper: ({ val }) => `transition-duration: ${val}ms;`, placeholder: "string" },
+  // transition delay
+  { matchReg: eval(`/^delay-(${HEX_COLOR_REG})$/`), wrapper: ({ val }) => `transition-delay: ${val}ms;`, placeholder: "string" },
+
   /**
    * TODO
    * isolate
@@ -293,7 +299,6 @@ const classNameMapper = [
   //   ["table-auto", { styleName: "table-layout", valType: "classValue", accept: [STRING_REG] }],
   //   ["table-fixed", { styleName: "table-layout", valType: "classValue", accept: [STRING_REG] }],
   //   // 下划线传值,TODO下划线杂糅中划线
-  //   ["transition", { styleName: "transition", valType: "classValue", hasUnit: true, unit: "ms", placeholder: "ms", accept: [NUMBERS_REG, FULL_REG] }],
   //   ["ease", { styleName: "transition-timing-function", valType: "classValue", accept: [STRING_REG] }],
   //   ["delay", { styleName: "transition-delay", valType: "classValue", hasUnit: true, unit: "ms", placeholder: "ms", accept: [NUMBERS_REG, FULL_REG] }],
   //   // 动画animate
