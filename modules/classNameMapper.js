@@ -214,7 +214,7 @@ const classNameMapper = [
   { matchReg: eval(`/^(capitalize|uppercase|lowercase)$/`), wrapper: ({ val }) => `text-transform: ${val};`, placeholder: "string" },
 
   // 背景颜色
-  { matchReg: eval(`/^bg-(${HEX_COLOR_REG})$/`), wrapper: ({ val }) => `background-color: ${val};`, placeholder: "string" },
+  { matchReg: eval(`/^bg-(${HEX_COLOR_REG})$/`), wrapper: ({ val }) => `background-color: #${val};`, placeholder: "string" },
 
   // shadow
   { matchReg: eval(`/^shadow-(${HEX_COLOR_REG})_(${HEX_COLOR_REG})_(${HEX_COLOR_REG})_(${HEX_COLOR_REG})_(${HEX_COLOR_REG})$/`), wrapper: ({ val }) => `background-color: ${val};`, placeholder: "string" },
