@@ -1,5 +1,5 @@
 const { workspace } = require("vscode")
-const classNameMapper = require("./classNameMapper")
+const { classNameMapper, SPC_REG } = require("./classNameMapper")
 const { LOCAL_CONF_NAME } = require("./config")
 const { getTextFromFilePath } = require("./utils")
 
@@ -22,16 +22,20 @@ module.exports = async function (className) {
   const { unit, valueRatio } = totalConfig
 
   const classNameDetail = classNameMapper.find(({ matchReg }) => matchReg.test(className))
+
   if (!classNameDetail) return ""
+  console.log("className :>> ", className)
 
-  const { matchReg, wrapper, valIndex = 1 } = classNameDetail
-  /**
-   * 特殊值处理
-   */
-  const sepecialValReg = /^\w+\[\w+\]$/ // 特殊值正则
-  const isSpecial = sepecialValReg.test(className)
+  let classVal
+  const specialReg = eval(`/${SPC_REG}$/`) // 特殊值[]
+  const isSpecial = specialReg.test(className)
+  if (isSpecial) {
+    classVal = specialReg.exec(className)[1]
+  } else {
+    const { matchReg, valIndex = 1 } = classNameDetail
+    classVal = matchReg.exec(className)[valIndex]
+  }
 
-  let classVal = isSpecial ? sepecialValReg.exec(className)[1].split("_") : matchReg.exec(className)[valIndex]
-
-  return wrapper({ val: classVal, unit, ratio: valueRatio })
+  const { wrapper } = classNameDetail
+  return wrapper({ val: classVal, unit, ratio: valueRatio, isSpecial })
 }
