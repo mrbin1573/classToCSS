@@ -245,7 +245,7 @@ const classNameMapper = [
 
       return commonWrapper({ stlNms: ["box-shadow"], val: vals.join("_"), isSpecial: true })
     },
-    placeholder: "number",
+    placeholder: "xxx",
   },
 
   // transition duration
