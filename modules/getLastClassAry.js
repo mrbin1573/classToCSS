@@ -8,7 +8,7 @@ const getLastClassAry = async () =>
   new Promise(async (resolve, reject) => {
     const res = []
     try {
-      const lastCSS = await getTextFromFilePath("\\" + GOLBAL_FILE_NAME)
+      const lastCSS = await getTextFromFilePath("/" + GOLBAL_FILE_NAME)
       const classReg = /\.(\w+\-*\S*)/gim
       lastCSS.replace(classReg, ($0, $1) => {
         res.push($1)

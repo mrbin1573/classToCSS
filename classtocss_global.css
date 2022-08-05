@@ -3,8 +3,8 @@
  * 需要手动引入到全局生效的位置，如index.html
  */
 /* apply result */
-.app-reset { padding: 0px;margin: 0px;box-sizing: content-box; }
+.app-reset { padding: 0rpx;margin: 0rpx;box-sizing: content-box; }
 .mid { display: flex; }
 .center { display: flex;justify-content: center; }
 .mid-center { display: flex;justify-content: center; }
-.card { overflow: hidden; border-radius: 15px;padding: 15px;margin-top: 10px;background-color: fff; }
+.card { overflow: hidden; border-radius: 30rpx;padding: 30rpx;margin-top: 20rpx;background-color: fff; }

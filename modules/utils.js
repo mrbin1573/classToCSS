@@ -116,7 +116,7 @@ const toSpecialStr = (string) => {
  * @description: 生成apply文件
  */
 const addApplyFile = () => {
-  writeStringToPath(APPLY_HEAD_DES, workspace.workspaceFolders[0].uri.fsPath + "\\" + APPLY_FILE_NAME)
+  writeStringToPath(APPLY_HEAD_DES, workspace.workspaceFolders[0].uri.fsPath + "/" + APPLY_FILE_NAME)
 }
 
 module.exports = {

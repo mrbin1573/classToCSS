@@ -14,7 +14,7 @@ module.exports = async function (className) {
    */
   let localConfig
   try {
-    localConfig = await getTextFromFilePath("\\" + LOCAL_CONF_NAME)
+    localConfig = await getTextFromFilePath("/" + LOCAL_CONF_NAME)
   } catch (error) {}
   if (localConfig) localConfig = JSON.parse(localConfig)
   const editorConfig = workspace.getConfiguration("classtocss")
