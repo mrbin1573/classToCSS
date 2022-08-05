@@ -37,7 +37,7 @@ const renderCSS2File = async () => {
   const { compress } = workspace.getConfiguration("classtocss")
   compress && (totalStyle = totalStyle.replace(/[\n\r\s]+/gim, ""))
 
-  writeStringToPath(GLOBAL_HEAD_DES + totalStyle, workspace.workspaceFolders[0].uri.fsPath + "\\" + GOLBAL_FILE_NAME)
+  writeStringToPath(GLOBAL_HEAD_DES + totalStyle, workspace.workspaceFolders[0].uri.fsPath + "/" + GOLBAL_FILE_NAME)
 }
 
 module.exports = renderCSS2File
