@@ -232,6 +232,8 @@ const classNameMapper = [
   // 背景颜色
   { matchReg: eval(`/^bg-(${HEX_CLR_REG}|${SPC_REG})$/`), wrapper: ({ val }) => `background-color: #${val};`, placeholder: "string" },
 
+  // pointer-events
+  { matchReg: eval(`/^pointer-events-(auto|none|visiblePainted|visibleFill|visibleStroke|visible|painted|fill|stroke|all|inherit|initial|unset)$/`), wrapper: ({ val }) => `pointer-events: ${val};`, placeholder: "string" },
   // shadow
   {
     matchReg: eval(`/^shadow-((\\w+\\_)+${HEX_CLR_REG})$/`),
@@ -426,8 +428,6 @@ const classNameMapper = [
   //   ["outline-none", { preStyle: "outline: 2px solid transparent; outline-offset: 2px; " }],
   //   ["outline-white", { preStyle: "outline: 2px dotted white; outline-offset: 2px; " }],
   //   ["outline-black", { preStyle: "outline: 2px dotted black; outline-offset: 2px; " }],
-  //   // 指向事件
-  //   ["pointer-events", { styleName: "pointer-events", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
   //   // 大小调整 比tailwindcss不同
   //   ["resize", { styleName: "resize", valType: "classValue", placeholder: "string", accept: [STRING_REG] }],
   //   // 用户选择
