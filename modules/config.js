@@ -1,7 +1,7 @@
 const config = {
   GOLBAL_FILE_NAME: "classtocss_global.css",
   LOCAL_CONF_NAME: "classtocss_config.json",
-  APPLY_FILE_NAME: "classtocss_apply.scss",
+  APPLY_FILE_NAME: "classtocss_apply.css",
   GLOBAL_HEAD_DES: `/**
  * classToCSS插件自动生成的全局样式，任何手动修改都会被覆盖
  * 需要手动引入到全局生效的位置，如index.html
