@@ -302,6 +302,11 @@ const classNameMapper = [
   { matchReg: eval(`/^delay-(${HEX_CLR_REG})$/`), wrapper: ({ val }) => `animation-delay: ${val}ms;`, placeholder: "string" },
 
   // animate
+  { // 上下浮动
+    matchReg: eval(`/^animate-float$/`),
+    wrapper: () => `animation: float 2s linear infinite; } @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(15px); } 100% { transform: translateY(0px); }`,
+    placeholder: "string",
+  },
   {
     matchReg: eval(`/^animate-ping$/`),
     wrapper: () => `animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite; } @keyframes ping { 75%, 100% { transform: scale(2); opacity: 0; }`,
