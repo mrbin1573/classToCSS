@@ -12,7 +12,7 @@ let lastClsssNamAry = []
  * @description: 渲染css到文件
  */
 const renderCSS2File = async () => {
-  let totalStyle = ""
+  let totalStyle
   /**
    * 普通class
    */
