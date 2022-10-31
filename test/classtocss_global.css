@@ -2,15 +2,18 @@
  * classToCSS插件自动生成的全局样式，任何手动修改都会被覆盖
  * 需要手动引入到全局生效的位置，如index.html
  */
+.border-100_solid_000 { border: 200rpx solid #000 }
+.border-100_solid_fff { border: 200rpx solid #fff }
+.border-bottom-100_solid_fff { border-bottom: 200rpx solid #fff }
 .mid-between { justify-content: space-between; }
 .mid-around { justify-content: space-around; }
 .mid-evenly { justify-content: space-evenly; }
 .mt-500-important { margin-top:  1000rpx !important;  }
 /* apply result */
-.app-reset { padding:  0rpx; margin:  0rpx; box-sizing: content-box; }
-.mid { display: flex;align-items: center; }
-.center { display: flex;justify-content: center; }
-.mid-center { display: flex;justify-content: center;align-items: center; }
-.mid-between { display: flex;justify-content: space-between;align-items: center; }
-.mid-around { display: flex;justify-content: space-around;align-items: center; }
-.mid-evenly { display: flex;justify-content: space-evenly;align-items: center; }
+.app-reset { padding:  0rpx;  margin:  0rpx;  box-sizing: content-box;  }
+.mid { display: flex; align-items: center;  }
+.center { display: flex; justify-content: center;  }
+.mid-center { display: flex; justify-content: center; align-items: center;  }
+.mid-between { display: flex; justify-content: space-between; align-items: center;  }
+.mid-around { display: flex; justify-content: space-around; align-items: center;  }
+.mid-evenly { display: flex; justify-content: space-evenly; align-items: center;  }

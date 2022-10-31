@@ -14,7 +14,7 @@ const getApplyStyle = async (classAry) => {
     let accStyle = ''
     for (let idx = 0; idx < classList.length; idx++) {
       const curName = classList[idx]
-      accStyle += await className2style(curName)
+      accStyle += await className2style(curName) + ' '
     }
 
     allStyle += `.${className} { ${accStyle} }\n`
