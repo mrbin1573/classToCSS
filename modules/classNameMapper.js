@@ -20,7 +20,7 @@ const commonWrapper = ({ stlNms, val, ratio = 1, unit = "", isSpecial }) =>
 const classNameMapper = [
   // padding
   { matchReg: eval(`/^p-(${NUMS_REG}|${SPC_REG})$/`), wrapper: (...args) => commonWrapper({ stlNms: ["padding"], ...args[0] }), placeholder: "number" },
-  { matchReg: eval(`/^p-(${NUMS_REG}(\\_${NUMS_REG})+)$/`), wrapper: (...args) => commonWrapper({ stlNms: ["padding"], ...args[0] }), placeholder: "number" },
+  { matchReg: eval(`/^p-(${NUMS_REG}(\\_${NUMS_REG}){1,3})$/`), wrapper: (...args) => commonWrapper({ stlNms: ["padding"], ...args[0] }), placeholder: "number" },
   { matchReg: eval(`/^pt-(${NUMS_REG}|${SPC_REG})$/`), wrapper: (...args) => commonWrapper({ stlNms: ["padding-top"], ...args[0] }), placeholder: "number" },
   { matchReg: eval(`/^pr-(${NUMS_REG}|${SPC_REG})$/`), wrapper: (...args) => commonWrapper({ stlNms: ["padding-right"], ...args[0] }), placeholder: "number" },
   { matchReg: eval(`/^pb-(${NUMS_REG}|${SPC_REG})$/`), wrapper: (...args) => commonWrapper({ stlNms: ["padding-bottom"], ...args[0] }), placeholder: "number" },
@@ -30,7 +30,7 @@ const classNameMapper = [
 
   // margin
   { matchReg: eval(`/^m-(${MINUS_NUMS_REG}|${SPC_REG})$/`), wrapper: (...args) => commonWrapper({ stlNms: ["margin"], ...args[0] }), placeholder: "number" },
-  { matchReg: eval(`/^m-(${MINUS_NUMS_REG}(\\_${NUMS_REG})+)$/`), wrapper: (...args) => commonWrapper({ stlNms: ["margin"], ...args[0] }), placeholder: "number" },
+  { matchReg: eval(`/^m-(${MINUS_NUMS_REG}(\\_${NUMS_REG}){1,3})$/`), wrapper: (...args) => commonWrapper({ stlNms: ["margin"], ...args[0] }), placeholder: "number" },
   { matchReg: eval(`/^mt-(${MINUS_NUMS_REG}|${SPC_REG})$/`), wrapper: (...args) => commonWrapper({ stlNms: ["margin-top"], ...args[0] }), placeholder: "number" },
   { matchReg: eval(`/^mr-(${MINUS_NUMS_REG}|${SPC_REG})$/`), wrapper: (...args) => commonWrapper({ stlNms: ["margin-right"], ...args[0] }), placeholder: "number" },
   { matchReg: eval(`/^mb-(${MINUS_NUMS_REG}|${SPC_REG})$/`), wrapper: (...args) => commonWrapper({ stlNms: ["margin-bottom"], ...args[0] }), placeholder: "number" },
@@ -84,8 +84,8 @@ const classNameMapper = [
   { matchReg: eval(`/^table-row-group$/`), wrapper: () => `display: table-row-group;`, placeholder: "string" },
 
   // float
-  { matchReg: eval(`/^fl$/`), wrapper: () => `float: left;`, placeholder: "string" },
-  { matchReg: eval(`/^fr$/`), wrapper: () => `float: right;`, placeholder: "string" },
+  { matchReg: eval(`/^(fl|f-l)$/`), wrapper: () => `float: left;`, placeholder: "string" },
+  { matchReg: eval(`/^fr|f-r$/`), wrapper: () => `float: right;`, placeholder: "string" },
   { matchReg: eval(`/^float-(none|left|right|inlineleft|inline-right|${SPC_REG})$/`), wrapper: ({ val }) => `float: ${val};`, placeholder: "string" },
 
   // overflow
