@@ -251,9 +251,9 @@ const classNameMapper = [
   },
 
   // transition duration
-  { matchReg: eval(`/^duration-(${HEX_CLR_REG})$/`), wrapper: ({ val }) => `transition-duration: ${val}ms;`, placeholder: "string" },
+  { matchReg: eval(`/^duration-(${HEX_CLR_REG})$/`), wrapper: ({ val }) => `animation-duration: ${val}ms;`, placeholder: "string" },
   // transition delay
-  { matchReg: eval(`/^delay-(${HEX_CLR_REG})$/`), wrapper: ({ val }) => `transition-delay: ${val}ms;`, placeholder: "string" },
+  { matchReg: eval(`/^delay-(${HEX_CLR_REG})$/`), wrapper: ({ val }) => `animation-delay: ${val}ms;`, placeholder: "string" },
 
   // animate
   {
