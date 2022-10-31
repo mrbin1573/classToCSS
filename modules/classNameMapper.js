@@ -199,7 +199,7 @@ const classNameMapper = [
   },
   // border-top
   {
-    matchReg: eval(`/^border-top-(${NUMS_REG}_\\w+_${HEX_CLR_REG})$/`),
+    matchReg: eval(`/^border-t-(${NUMS_REG}_\\w+_${HEX_CLR_REG})$/`),
     wrapper: ({ val, ratio, unit }) => {
       let vals = val.split("_")
       return `border-top: ${vals[0] * ratio}${unit} ${vals[1]} #${vals[2]}`
@@ -208,7 +208,7 @@ const classNameMapper = [
   },
   // border-right
   {
-    matchReg: eval(`/^border-right-(${NUMS_REG}_\\w+_${HEX_CLR_REG})$/`),
+    matchReg: eval(`/^border-r-(${NUMS_REG}_\\w+_${HEX_CLR_REG})$/`),
     wrapper: ({ val, ratio, unit }) => {
       let vals = val.split("_")
       return `border-right: ${vals[0] * ratio}${unit} ${vals[1]} #${vals[2]}`
@@ -217,7 +217,7 @@ const classNameMapper = [
   },
   // border-bottom
   {
-    matchReg: eval(`/^border-bottom-(${NUMS_REG}_\\w+_${HEX_CLR_REG})$/`),
+    matchReg: eval(`/^border-b-(${NUMS_REG}_\\w+_${HEX_CLR_REG})$/`),
     wrapper: ({ val, ratio, unit }) => {
       let vals = val.split("_")
       return `border-bottom: ${vals[0] * ratio}${unit} ${vals[1]} #${vals[2]}`
@@ -226,7 +226,7 @@ const classNameMapper = [
   },
   // border-left
   {
-    matchReg: eval(`/^border-left-(${NUMS_REG}_\\w+_${HEX_CLR_REG})$/`),
+    matchReg: eval(`/^border-l-(${NUMS_REG}_\\w+_${HEX_CLR_REG})$/`),
     wrapper: ({ val, ratio, unit }) => {
       let vals = val.split("_")
       return `border-left: ${vals[0] * ratio}${unit} ${vals[1]} #${vals[2]}`
@@ -266,6 +266,7 @@ const classNameMapper = [
   // text decoration color
   { matchReg: eval(`/^decoration-(${HEX_CLR_REG}|${SPC_REG})$/`), wrapper: ({ val }) => `text-decoration-color: #${val};`, placeholder: "string" },
 
+  
   // text decoration style
   { matchReg: eval(`/^decoration-(solid|double|dotted|dashed|wavy)$/`), wrapper: ({ val }) => `text-decoration-style: ${val};`, placeholder: "string" },
 
@@ -296,13 +297,14 @@ const classNameMapper = [
     placeholder: "xxx",
   },
 
-  // transition duration
+  // animation duration
   { matchReg: eval(`/^duration-(${HEX_CLR_REG})$/`), wrapper: ({ val }) => `animation-duration: ${val}ms;`, placeholder: "string" },
-  // transition delay
+  // animation delay
   { matchReg: eval(`/^delay-(${HEX_CLR_REG})$/`), wrapper: ({ val }) => `animation-delay: ${val}ms;`, placeholder: "string" },
 
   // animate
-  { // 上下浮动
+  {
+    // 上下浮动
     matchReg: eval(`/^animate-float$/`),
     wrapper: () => `animation: float 2s linear infinite; } @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(15px); } 100% { transform: translateY(0px); }`,
     placeholder: "string",
@@ -398,22 +400,6 @@ const classNameMapper = [
   //   // 下划线传值,TODO下划线杂糅中划线
   //   ["ease", { styleName: "transition-timing-function", valType: "classValue", accept: [STRING_REG] }],
   //   ["delay", { styleName: "transition-delay", valType: "classValue", hasUnit: true, unit: "ms", placeholder: "ms", accept: [NUMS_REG, FULL_REG] }],
-  //   // 动画animate
-  //   ["animate-none", { preStyle: "animation: none; " }],
-
-  //   [
-  //     "animate-ping",
-  //     {
-  //       preStyle: "animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;",
-  //       isolateStyle: `@keyframes ping {
-  //   75%, 100% {
-  //     transform: scale(2);
-  //     opacity: 0;
-  //   }
-  // })$/`,
-  //       placeholder: "",
-  //     },
-  //   ],
   //   [
   //     "animate-pulse",
   //     {

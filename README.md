@@ -49,8 +49,11 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 - [letter-spacing](#letter-spacing)
 - [line-height](#line-height)
 - [color](#color)
+- [border 多值](#border)
 - [border-radius](#border-radius)
 - [border-width](#border-width)
+- [border-color](#border-color)
+- [border-style](#border-style)
 - [opacity](#opacity)
 - [cursor](#cursor)
 - [user-select](#user-select)
@@ -62,6 +65,13 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 - [文本溢出显示为...](#文本溢出显示为...)
 - [text-transform](#text-transform)
 - [background-color](#background-color)
+- [pointer-events](#pointer-events)
+- [box-shadow](#box-shadow)
+- [animation-duration](#animation-duration)
+- [动画-上下浮动](#animate-float)
+- [动画-脉冲](#animate-ping)
+- [动画-旋转](#animate-spin)
+- [动画-旋转逆向](#animate-spin-reverse)
 
 ---
 
@@ -350,15 +360,25 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 
 ## line-height
 
-| class                 | style              | 解释                        |
-| :-------------------- | :----------------- | :-------------------------- |
-| lh-xx、line-height-xx | letter-height: xx; | xx：合法值，如 1、1px、1rem |
+| class                 | style              | 解释                            |
+| :-------------------- | :----------------- | :------------------------------ |
+| lh-xx、line-height-xx | letter-height: xx; | xx：如 1、1px、1rem，不会缩放值 |
 
 ## color
 
 | class    | style       | 解释                                                      |
 | :------- | :---------- | :-------------------------------------------------------- |
 | color-xx | color: #xx; | xx：十六进制颜色值；注意不需要‘#’，如`#fff` 写`color-fff` |
+
+## border
+
+| class               | style                       | 解释                                                                                                       |
+| :------------------ | :-------------------------- | :--------------------------------------------------------------------------------------------------------- |
+| border-xx_yy_zzzz   | border: xx yy #zzzz;        | xx：border-width; <br/> yy：border-style; <br/>zzzz：十六进制颜色值；注意不需要‘#’，如`#fff` 写`color-fff` |
+| border-t-xx_yy_zzzz | border-top: xx yy #zzzz;    | 同上                                                                                                       |
+| border-r-xx_yy_zzzz | border-right: xx yy #zzzz;  | 同上                                                                                                       |
+| border-b-xx_yy_zzzz | border-bottom: xx yy #zzzz; | 同上                                                                                                       |
+| border-l-xx_yy_zzzz | border-left: xx yy #zzzz;   | 同上                                                                                                       |
 
 ## border-radius
 
@@ -393,9 +413,9 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 
 ## border-style
 
-| class     | style            | 解释                    |
-| :-------- | :--------------- | :---------------------- |
-| border-xx | border-style: xx | xx：none、dotted、inset |
+| class     | style            | 解释                                                                  |
+| :-------- | :--------------- | :-------------------------------------------------------------------- |
+| border-xx | border-style: xx | xx：none、dotted、dashed、solid、double、groove、ridge、inset、outset |
 
 ## opacity
 
@@ -474,8 +494,48 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 | :----- | :------------------- | :--------------------------------------------------------- |
 | bg-xxx | background-color: xx | xxx：十六进制颜色值；注意不需要‘#’，如`#fff` 写`color-fff` |
 
+## pointer-events
+
+| class                | style                | 解释                                                                                                                 |
+| :------------------- | :------------------- | :------------------------------------------------------------------------------------------------------------------- |
+| pointer-events--xxxx | pointer-events: xxxx | auto、none、visiblePainted、visibleFill、visibleStroke、visible、painted、fill、stroke、all、inherit、initial、unset |
+
+## box-shadow
+
+| class                 | style                               | 解释 |
+| :-------------------- | :---------------------------------- | :--- |
+| shadow-6_6_dedede     | box-shadow: 6px 6px #dedede         |      |
+| shadow-6_6_6_dedede   | box-shadow: 6px 6px 6px #dedede     |      |
+| shadow-6_6_6_6_dedede | box-shadow: 6px 6px 6px 6px #dedede |      |
+
+## animation-duration
+
+| class        | style                     | 解释 |
+| :----------- | :------------------------ | :--- |
+| duration-666 | animation-duration: 666ms |      |
+
+## animate-float
+
+| class         | style                                                   | 解释                  |
+| :------------ | :------------------------------------------------------ | :-------------------- |
+| animate-float | animate-float: { animation: float 2s linear infinite; } | 动画循环上下浮动 15px |
+
+## animate-ping
+
+| class        | style                                                           | 解释             |
+| :----------- | :-------------------------------------------------------------- | :--------------- |
+| animate-ping | animate-float: { ping 1s cubic-bezier(0, 0, 0.2, 1) infinite; } | 动画循环放大消失 |
+
+## animate-spin
+
+| class        | style                                       | 解释           |
+| :----------- | :------------------------------------------ | :------------- |
+| animate-ping | animate-float: { spin 2s linear infinite; } | 动画顺时针旋转 |
+
+## animate-spin-reverse
+
+| class        | style                                               | 解释           |
+| :----------- | :-------------------------------------------------- | :------------- |
+| animate-ping | animate-float: { spin-reverse 2s linear infinite; } | 动画逆时针旋转 |
+
 ---
-
-## 已知问题
-
-- vue 无代码提示（vetur 导致）

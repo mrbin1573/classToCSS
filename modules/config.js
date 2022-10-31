@@ -34,7 +34,8 @@ const config = {
 /* 预设水平平均分布、垂直居中（flex） */
 .mid-around {
   @apply .flex .justify-around .items-center;
-}/* 预设水平平均分布、垂直居中（flex） */
+}
+/* 预设水平平均分布、垂直居中（flex） */
 .mid-evenly {
   @apply .flex .justify-evenly .items-center;
 }`,

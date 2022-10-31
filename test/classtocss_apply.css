@@ -30,3 +30,5 @@
 .mid-evenly {
   @apply .flex .justify-evenly .items-center;
 }
+
+
