@@ -7,13 +7,15 @@ const { toSpecialStr } = require("./utils")
  * @return {Promise} css
  */
 const getSimpleStyle = async (classAry) => {
-  let allStyle = ""
-  for (let index = 0; index < classAry.length; index++) {
-    const className = classAry[index]
-    const style = await className2style(className)
+  let allStyle = await Promise.all(classAry.map((className) => className2style(className)))
+  allStyle = allStyle.reduce((_allStyle, curStyle, curIdx) => {
+    if (!curStyle) return _allStyle
+    
+    let _className = classAry[curIdx]
+    const _css = `.${toSpecialStr(_className)} { ${curStyle} }\n`
 
-    allStyle += !!style ? `.${toSpecialStr(className)} { ${style} }\n` : ""
-  }
+    return _allStyle + _css
+  }, "")
 
   return allStyle
 }

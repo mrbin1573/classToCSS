@@ -33,9 +33,9 @@ const renderCSS2File = async () => {
 
   if (!totalStyle) return
 
-  // 压缩
-  const { compress } = workspace.getConfiguration("classtocss")
-  compress && (totalStyle = totalStyle.replace(/[\n\r\s]+/gim, ""))
+  // TODO 压缩,有的空格不能去掉，如@keyframe name之间
+  // const { compress } = workspace.getConfiguration("classtocss")
+  // compress && (totalStyle = totalStyle.replace(/[\n\r\s]+/gim, ""))
 
   writeStringToPath(GLOBAL_HEAD_DES + totalStyle, workspace.workspaceFolders[0].uri.fsPath + "/" + GOLBAL_FILE_NAME)
 }

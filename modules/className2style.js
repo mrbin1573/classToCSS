@@ -24,7 +24,7 @@ module.exports = async function (className) {
   const classNameDetail = classNameMapper.find(({ matchReg }) => matchReg.test(className))
 
   if (!classNameDetail) return ""
-  console.log("className :>> ", className)
+  // console.log("className :>> ", className)
 
   let classVal
   const specialReg = eval(`/${SPC_REG}$/`) // 特殊值[]
