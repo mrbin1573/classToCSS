@@ -165,7 +165,11 @@ const classNameMapper = [
   { matchReg: eval(`/^(line-height|lh)-(${NUMS_REG}|${NUMS_REG}\\w+|${SPC_REG})$/`), valIndex: 2, wrapper: ({ val }) => `line-height: ${val};`, placeholder: "string" },
 
   // color
-  { matchReg: eval(`/^color-(${HEX_CLR_REG}|${SPC_REG})$/`), wrapper: ({ val }) => `color: #${val};`, placeholder: "string" },
+  {
+    matchReg: eval(`/^color-(${HEX_CLR_REG}|${SPC_REG})$/`),
+    wrapper: ({ val, isSpecial }) => `color: ${isSpecial ? val : "#" + val};`,
+    placeholder: "string",
+  },
 
   // border radius
   { matchReg: eval(`/^(radius|r)-(${NUMS_REG}|${SPC_REG})$/`), valIndex: 2, wrapper: (...args) => commonWrapper({ stlNms: ["overflow: hidden; border-radius"], ...args[0] }), placeholder: "string" },
@@ -266,7 +270,6 @@ const classNameMapper = [
   // text decoration color
   { matchReg: eval(`/^decoration-(${HEX_CLR_REG}|${SPC_REG})$/`), wrapper: ({ val }) => `text-decoration-color: #${val};`, placeholder: "string" },
 
-  
   // text decoration style
   { matchReg: eval(`/^decoration-(solid|double|dotted|dashed|wavy)$/`), wrapper: ({ val }) => `text-decoration-style: ${val};`, placeholder: "string" },
 
