@@ -185,8 +185,54 @@ const classNameMapper = [
   // border color 两位数是width 三位数以上是颜色 十六进制的自定义样式需要注意
   { matchReg: eval(`/^border-(${HEX_CLR_REG})$/`), wrapper: ({ val }) => `border-color: #${val};`, placeholder: "string" },
 
-  // border style TODO 多个值
-  { matchReg: eval(`/^border-(none|dotted|inset)$/`), wrapper: ({ val }) => `border-style: ${val};`, placeholder: "string" },
+  // border style
+  { matchReg: eval(`/^border-(none|dotted|dashed|solid|double|groove|ridge|inset|outset)$/`), wrapper: ({ val }) => `border-style: ${val};`, placeholder: "string" },
+
+  // border
+  {
+    matchReg: eval(`/^border-(${NUMS_REG}_\\w+_${HEX_CLR_REG})$/`),
+    wrapper: ({ val, ratio, unit }) => {
+      let vals = val.split("_")
+      return `border: ${vals[0] * ratio}${unit} ${vals[1]} #${vals[2]}`
+    },
+    placeholder: "string",
+  },
+  // border-top
+  {
+    matchReg: eval(`/^border-top-(${NUMS_REG}_\\w+_${HEX_CLR_REG})$/`),
+    wrapper: ({ val, ratio, unit }) => {
+      let vals = val.split("_")
+      return `border-top: ${vals[0] * ratio}${unit} ${vals[1]} #${vals[2]}`
+    },
+    placeholder: "string",
+  },
+  // border-right
+  {
+    matchReg: eval(`/^border-right-(${NUMS_REG}_\\w+_${HEX_CLR_REG})$/`),
+    wrapper: ({ val, ratio, unit }) => {
+      let vals = val.split("_")
+      return `border-right: ${vals[0] * ratio}${unit} ${vals[1]} #${vals[2]}`
+    },
+    placeholder: "string",
+  },
+  // border-bottom
+  {
+    matchReg: eval(`/^border-bottom-(${NUMS_REG}_\\w+_${HEX_CLR_REG})$/`),
+    wrapper: ({ val, ratio, unit }) => {
+      let vals = val.split("_")
+      return `border-bottom: ${vals[0] * ratio}${unit} ${vals[1]} #${vals[2]}`
+    },
+    placeholder: "string",
+  },
+  // border-left
+  {
+    matchReg: eval(`/^border-left-(${NUMS_REG}_\\w+_${HEX_CLR_REG})$/`),
+    wrapper: ({ val, ratio, unit }) => {
+      let vals = val.split("_")
+      return `border-left: ${vals[0] * ratio}${unit} ${vals[1]} #${vals[2]}`
+    },
+    placeholder: "string",
+  },
 
   // opacity 0~100
   { matchReg: eval(`/^opacity-(${NUMS_REG}|${SPC_REG})$/`), wrapper: ({ val }) => `opacity: ${val / 100};`, placeholder: "string" },
