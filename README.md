@@ -384,14 +384,16 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 
 ## border-radius
 
-| class                 | style                                              |
-| :-------------------- | :------------------------------------------------- |
-| round、radius-full    | overflow: hidden; border-radius: 100%              |
-| r-xx、radius-xx       | overflow: hidden; border-radius: xxpx              |
-| r-tl-xx、radius-tl-xx | overflow: hidden; border-top-left-radius: xxpx     |
-| r-tr-xx、radius-tr-xx | overflow: hidden; border-top-right-radius: xxpx    |
-| r-bl-xx、radius-bl-xx | overflow: hidden; border-bottom-left-radius: xxpx  |
-| r-br-xx、radius-br-xx | overflow: hidden; border-bottom-right-radius: xxpx |
+| class                 | style                                                             |
+| :-------------------- | :---------------------------------------------------------------- |
+| round、radius-full    | border-radius: 100%                                               |
+| r-xx、radius-xx       | border-radius: xxpx                                               |
+| r-t-xx、radius-t-xx   | border-top-left-radius: xxpx; border-top-right-radius: xxpx       |
+| r-b-xx、radius-b-xx   | border-bottom-left-radius: xxpx; border-bottom-right-radius: xxpx |
+| r-tl-xx、radius-tl-xx | border-top-left-radius: xxpx                                      |
+| r-tr-xx、radius-tr-xx | border-top-right-radius: xxpx                                     |
+| r-bl-xx、radius-bl-xx | border-bottom-left-radius: xxpx                                   |
+| r-br-xx、radius-br-xx | border-bottom-right-radius: xxpx                                  |
 
 ## border-width
 
