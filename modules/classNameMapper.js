@@ -172,12 +172,14 @@ const classNameMapper = [
   },
 
   // border radius
-  { matchReg: eval(`/^(radius|r)-(${NUMS_REG}|${SPC_REG})$/`), valIndex: 2, wrapper: (...args) => commonWrapper({ stlNms: ["overflow: hidden; border-radius"], ...args[0] }), placeholder: "string" },
-  { matchReg: eval(`/^(radius-tl|r-tl)-(${NUMS_REG}|${SPC_REG})$/`), valIndex: 2, wrapper: (...args) => commonWrapper({ stlNms: ["overflow: hidden; border-top-left-radius"], ...args[0] }), placeholder: "string" },
-  { matchReg: eval(`/^(radius-tr|r-tr)-(${NUMS_REG}|${SPC_REG})$/`), valIndex: 2, wrapper: (...args) => commonWrapper({ stlNms: ["overflow: hidden; border-top-right-radius"], ...args[0] }), placeholder: "string" },
-  { matchReg: eval(`/^(radius-br|r-br)-(${NUMS_REG}|${SPC_REG})$/`), valIndex: 2, wrapper: (...args) => commonWrapper({ stlNms: ["overflow: hidden; border-bottom-right-radius"], ...args[0] }), placeholder: "string" },
-  { matchReg: eval(`/^(radius-bl|r-bl)-(${NUMS_REG}|${SPC_REG})$/`), valIndex: 2, wrapper: (...args) => commonWrapper({ stlNms: ["overflow: hidden; border-bottom-left-radius"], ...args[0] }), placeholder: "string" },
-  { matchReg: eval(`/^(round|radius-full)$/`), wrapper: () => `overflow: hidden; border-radius: 100%;`, placeholder: "string" },
+  { matchReg: eval(`/^(radius|r)-(${NUMS_REG}|${SPC_REG})$/`), valIndex: 2, wrapper: (...args) => commonWrapper({ stlNms: ["border-radius"], ...args[0] }), placeholder: "string" },
+  { matchReg: eval(`/^(radius-tl|r-tl)-(${NUMS_REG}|${SPC_REG})$/`), valIndex: 2, wrapper: (...args) => commonWrapper({ stlNms: ["border-top-left-radius"], ...args[0] }), placeholder: "string" },
+  { matchReg: eval(`/^(radius-tr|r-tr)-(${NUMS_REG}|${SPC_REG})$/`), valIndex: 2, wrapper: (...args) => commonWrapper({ stlNms: ["border-top-right-radius"], ...args[0] }), placeholder: "string" },
+  { matchReg: eval(`/^(radius-br|r-br)-(${NUMS_REG}|${SPC_REG})$/`), valIndex: 2, wrapper: (...args) => commonWrapper({ stlNms: ["border-bottom-right-radius"], ...args[0] }), placeholder: "string" },
+  { matchReg: eval(`/^(radius-bl|r-bl)-(${NUMS_REG}|${SPC_REG})$/`), valIndex: 2, wrapper: (...args) => commonWrapper({ stlNms: ["border-bottom-left-radius"], ...args[0] }), placeholder: "string" },
+  { matchReg: eval(`/^(radius-t|r-t)-(${NUMS_REG}|${SPC_REG})$/`), valIndex: 2, wrapper: (...args) => commonWrapper({ stlNms: ["border-top-left-radius", "border-top-right-radius"], ...args[0] }), placeholder: "number" },
+  { matchReg: eval(`/^(radius-b|r-b)-(${NUMS_REG}|${SPC_REG})$/`), valIndex: 2, wrapper: (...args) => commonWrapper({ stlNms: ["border-bottom-left-radius", "border-bottom-right-radius"], ...args[0] }), placeholder: "number" },
+  { matchReg: eval(`/^(round|radius-full)$/`), wrapper: () => `border-radius: 100%;`, placeholder: "string" },
 
   // border width 两位数是width 三位数以上是颜色 十六进制的自定义样式需要注意
   { matchReg: eval(`/^border-(\\d{1,2}|${SPC_REG})$/`), wrapper: (...args) => commonWrapper({ stlNms: ["border-width"], ...args[0] }), placeholder: "string" },
