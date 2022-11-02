@@ -134,6 +134,10 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 
 以下语法提供值不满足需求时，可用自定义值语法`[]`，如`color-[red]`，特殊值不会被配置项缩放值改变
 
+## important
+
+xxx-important 会自动生成`xxx !important`
+
 ## margin
 
 | class | style                                | 解释 |
