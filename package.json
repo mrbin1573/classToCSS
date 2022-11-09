@@ -2,13 +2,14 @@
   "name": "classtocss",
   "displayName": "classtocss",
   "description": "Class automatically converts to CSS",
-  "version": "0.22.1031",
+  "version": "0.22.1109",
   "license": "MIT",
   "licenseUrl": "LICENSE",
   "author": "hebin",
   "engines": {
     "vscode": "^1.54.0"
   },
+  "icon": "./logo.png",
   "publisher": "classToCss",
   "categories": [
     "Formatters",
