@@ -9,7 +9,7 @@
   "engines": {
     "vscode": "^1.54.0"
   },
-  "icon": "./logo.png",
+  "icon": "logo.png",
   "publisher": "classToCss",
   "categories": [
     "Formatters",
