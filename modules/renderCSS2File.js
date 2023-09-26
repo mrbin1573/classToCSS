@@ -1,8 +1,8 @@
 const getWorkspaceClassAry = require("./getWorkspaceClassAry.js")
 const getSimpleStyle = require("./getSimpleStyle.js")
-const { writeStringToPath } = require("./utils.js")
+const { writeStringToPath, getTextFromFilePath } = require("./utils.js")
 const getLastClassAry = require("./getLastClassAry.js")
-const { GOLBAL_FILE_NAME, GLOBAL_HEAD_DES } = require("./config.js")
+const { GOLBAL_FILE_NAME, GLOBAL_HEAD_DES, LOCAL_CONF_NAME } = require("./config.js")
 const getApplyClass = require("./getApplyClass.js")
 const getApplyStyle = require("./getApplyStyle.js")
 const { workspace } = require("vscode")
@@ -12,6 +12,15 @@ let lastClsssNamAry = []
  * @description: 渲染css到文件
  */
 const renderCSS2File = async () => {
+  // 没有配置文件不运行
+  let localConfig
+  try {
+    localConfig = await getTextFromFilePath("/" + LOCAL_CONF_NAME)
+  } catch (error) {
+    return
+  }
+  if (!localConfig) return
+
   let totalStyle
   /**
    * 普通class
