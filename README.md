@@ -2,12 +2,12 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 
 > 根目录生成 classtocss_global.css 文件，所有 stlye 都编译在里面。需要手动引入至项目能生效得地方
 
-- 必须在根目录添加配置文件`classtocss_config.json`才能运行-2023年9月26日
+- 必须在根目录添加配置文件`classtocss_config.json`才能运行-2023 年 9 月 26 日
 - 一次安装，永久任意项目生效
 
 - 全局去重，有效减小压缩代码体积
 
-- 语法参考 `tailwindcss`，使用过的可无缝衔接（有些许差异和补充，不过有提示）
+- 语法参考 `tailwindcss`，使用过的可无缝衔接（有些许差异和补充）
 
 - 可配置任意单位以及值缩放比例，轻松解决适配问题
 
@@ -15,7 +15,7 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 
 - apply 语法任意组合，提供进一步自定义封装
 
-- 语法结尾常用写法简写，且提供自定义值'[]'
+- 语法皆采用常用写法简写，且提供自定义值'[]'
 
 ---
 
@@ -120,14 +120,14 @@ classToCSS, 一款自动生成 `css` 的`VSCode`插件
 
 可以在 classtocss_apply.scss 文件中添加更多自定义组合样式
 
-| class       | style        | 解释                        |
-| :---------- | :----------- | :-------------------------- |
-| mid         | margin: 6px; | 垂直居中                    |
-| center      | margin: 6px; | 水平居中                    |
-| mid-center  | margin: 6px; | 水平垂直居中                |
-| mid-between | margin: 6px; | 垂直居中，水平两端对齐      |
-| mid-around  | margin: 6px; | 垂直居中，水平 space-around |
-| mid-evenly  | margin: 6px; | 垂直居中，水平 space-evenly |
+| class       | style                                                                     | 解释                        |
+| :---------- | :------------------------------------------------------------------------ | :-------------------------- |
+| mid         | display: flex; align-tiems: center;                                       | 垂直居中                    |
+| center      | display: flex; justify-content: center;                                   | 水平居中                    |
+| mid-center  | display: flex; flex; align-tiems: center; justify-content: center;        | 水平垂直居中                |
+| mid-between | display: flex; flex; align-tiems: center; justify-content: space-between; | 垂直居中，水平两端对齐      |
+| mid-around  | display: flex; flex; align-tiems: center; justify-content: space-around;  | 垂直居中，水平 space-around |
+| mid-evenly  | display: flex; flex; align-tiems: center; justify-content: space-eveny;   | 垂直居中，水平 space-evenly |
 
 # class 语法
 

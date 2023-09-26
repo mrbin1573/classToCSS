@@ -64,32 +64,6 @@
         ]
       }
     ],
-    "snippets": [
-      {
-        "language": "vue",
-        "path": "./snippets.json"
-      },
-      {
-        "language": "html",
-        "path": "./snippets.json"
-      },
-      {
-        "language": "javascript",
-        "path": "./snippets.json"
-      },
-      {
-        "language": "jade",
-        "path": "./snippets.json"
-      },
-      {
-        "language": "ftl",
-        "path": "./snippets.json"
-      },
-      {
-        "language": "react",
-        "path": "./snippets.json"
-      }
-    ],
     "configuration": {
       "title": "classtocss configuration",
       "properties": {
